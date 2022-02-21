@@ -443,6 +443,9 @@ module dut #(
   /*
      * Register bus interface (for the pmp configuration)
      */
+  reg_req_t cfg_req_mod, cfg_req_mod_reg;
+  reg_rsp_t cfg_rsp_mod, cfg_rsp_mod_reg;
+
   axi_to_reg #(
       // width of the address
       .ADDR_WIDTH(ADDR_WIDTH),
@@ -452,6 +455,13 @@ module dut #(
       .ID_WIDTH  (ID_WIDTH),
       // width of the user signal.
       .USER_WIDTH(AWUSER_WIDTH),
+      // maximum number of outstanding writes.
+      .AXI_MAX_WRITE_TXNS(32'd2),
+      // maximum number of outstanding reads.
+      .AXI_MAX_READ_TXNS(32'd2),
+      // whether the AXI-Lite W channel should be decoupled with a register. This
+      // can help break long paths at the expense of registers.
+      .DECOUPLE_W(1),
       // AXI request struct type
       .axi_req_t (iopmp_axi_req_t),
       // AXI response struct type
@@ -466,10 +476,51 @@ module dut #(
       .testmode_i(1'b0),
       .axi_req_i (cfg_axi_req_o),
       .axi_rsp_o (cfg_axi_rsp_i),
-      .reg_req_o (cfg_reg_req_o),
-      .reg_rsp_i (cfg_reg_rsp_i)
+      .reg_req_o (cfg_req_mod),
+      .reg_rsp_i (cfg_rsp_mod)
   );
 
+
+
+  // buffer the reg signal  
+  typedef struct packed {
+    logic [$bits(cfg_req_mod.addr)-1:0]  addr;
+    logic [$bits(cfg_req_mod.write)-1:0] write;
+    logic [$bits(cfg_req_mod.wdata)-1:0] wdata;
+    logic [$bits(cfg_req_mod.wstrb)-1:0] wstrb;
+    logic [$bits(cfg_rsp_mod.rdata)-1:0] rdata;
+    logic [$bits(cfg_rsp_mod.error)-1:0] error;
+  } reg_intf_data_t;
+
+  spill_register #(
+      .T(reg_intf_data_t),
+      .Bypass(1'b0)
+  ) spill_register0 (
+      .clk_i (clk_i),
+      .rst_ni(rst_ni),
+
+      .valid_i(cfg_req_mod.valid),
+      .ready_o(cfg_rsp_mod.ready),
+      .data_i({
+        cfg_req_mod.addr,
+        cfg_req_mod.write,
+        cfg_req_mod.wdata,
+        cfg_req_mod.wstrb,
+        cfg_rsp_mod_reg.rdata,
+        cfg_rsp_mod_reg.error
+      }),
+
+      .valid_o(cfg_req_mod_reg.valid),
+      .ready_i(cfg_rsp_mod_reg.ready),
+      .data_o({
+        cfg_req_mod_reg.addr,
+        cfg_req_mod_reg.write,
+        cfg_req_mod_reg.wdata,
+        cfg_req_mod_reg.wstrb,
+        cfg_rsp_mod.rdata,
+        cfg_rsp_mod.error
+      })
+  );
 
   axi_cut #(
       // bypass enable
@@ -514,8 +565,8 @@ module dut #(
       .slv_rsp_o(sq_axi_rsp_i),
       .mst_req_o(m_axi_req_i),
       .mst_rsp_i(m_axi_rsp_o),
-      .cfg_req_i(cfg_reg_req_o),
-      .cfg_rsp_o(cfg_reg_rsp_i)
+      .cfg_req_i(cfg_req_mod_reg),
+      .cfg_rsp_o(cfg_rsp_mod_reg)
   );
 
 
