@@ -2,8 +2,8 @@
 [![SHL-0.51 license](https://img.shields.io/badge/license-SHL--0.51-green)](LICENSE) 
 
 # RISC-V AXI IO-PMP 
-TODO: add description
-
+![AXI IO-PMP](./media/axi_io_pmp_web.svg)
+<img src="./media/axi_io_pmp_web.svg">
 
 ### Install & Requirements
 All relevant linux packages and the python virtual environment can be setup by calling
