@@ -3,7 +3,6 @@
 
 # RISC-V AXI IO-PMP 
 ![AXI IO-PMP](./media/axi_io_pmp_web.svg)
-<img src="./media/axi_io_pmp_web.svg">
 
 ### Install & Requirements
 All relevant linux packages and the python virtual environment can be setup by calling
