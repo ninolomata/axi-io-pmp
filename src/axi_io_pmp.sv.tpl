@@ -42,9 +42,9 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
     parameter int unsigned PMP_LEN        = (XLEN == 64) ? 54 : 32, // rv64: 54, rv32: 32
     parameter int unsigned PMPGranularity = 10,                // 2**(G+2) = 4K
     // Implementation specific parameters
-    parameter int unsigned NR_MD = 2,
-    parameter int unsigned NR_ENTRIES_PER_MD = 8,
-    parameter int unsigned NR_MASTERS = 2,
+    parameter int unsigned NR_MD = ${mem_domains},
+    parameter int unsigned NR_ENTRIES_PER_MD = ${nr_entries},
+    parameter int unsigned NR_MASTERS = ${nr_masters},
     // AXI parameters
     // maximum number of AXI bursts outstanding at the same time
     parameter int unsigned MaxTxns        = 32'd2
@@ -314,38 +314,40 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
                 clear_illcgt_d = 1'b1;
             end
           end
+          % if xlen == 32:
+          io_pmp_reg_pkg::IO_PMP_IOPMP_MDMSK_LO_OFFSET,
+          io_pmp_reg_pkg::IO_PMP_IOPMP_MDMSK_HI_OFFSET: begin
+            if(~io_pmp_reg2hw.iopmp_mdmsk_hi.l) begin
+              cfg_req_mod.write = 1'b0;
+            end
+          end
+          % else:
           io_pmp_reg_pkg::IO_PMP_IOPMP_MDMSK_OFFSET: begin
             if(~io_pmp_reg2hw.iopmp_mdmsk.l) begin
               cfg_req_mod.write = 1'b0;
             end
           end
-          [io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+0:io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+63]: begin
-            automatic int index_addr = (cfg_req_i.addr - IO_PMP_IOPMP_ADDR_0_OFFSET);
-            automatic int index_cfg = index_addr >> 4;
-            if(index_addr < 8) begin
-              if (!(!io_pmp_reg2hw.pmp_cfg_1[index_cfg][7] && !(io_pmp_reg2hw.pmp_cfg_1[index_cfg + 1][7] && io_pmp_reg2hw.pmp_cfg_1[index_cfg + 1][4:3] == riscv::TOR))) cfg_req_mod.write = 1'b0;
-            end else if (index_addr == 8) begin
-              if (io_pmp_reg2hw.pmp_cfg_1[8][7])  cfg_req_mod.write = 1'b0;
+          % endif
+          % for i in range(mem_domains):
+          [io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+${i*nr_entries*(xlen//8)}:io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+${(i + 1)*((nr_entries * (xlen//8))-1)}]: begin
+            automatic int index_addr = (cfg_req_i.addr - IO_PMP_IOPMP_ADDR_${i*nr_entries}_OFFSET);
+            automatic int index_cfg = index_addr >> ${(xlen//16)};
+            if(index_addr < ${nr_entries}) begin
+              if (!(!io_pmp_reg2hw.pmp_cfg_${1}[index_cfg][7] && !(io_pmp_reg2hw.pmp_cfg_${1}[index_cfg + 1][7] && io_pmp_reg2hw.pmp_cfg_${1}[index_cfg + 1][4:3] == riscv::TOR))) cfg_req_mod.write = 1'b0;
+            end else if (index_addr == ${nr_entries}) begin
+              if (io_pmp_reg2hw.pmp_cfg_${1}[${nr_entries}][7])  cfg_req_mod.write = 1'b0;
             end
           end
-          [io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+64:io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET+126]: begin
-            automatic int index_addr = (cfg_req_i.addr - IO_PMP_IOPMP_ADDR_8_OFFSET);
-            automatic int index_cfg = index_addr >> 4;
-            if(index_addr < 8) begin
-              if (!(!io_pmp_reg2hw.pmp_cfg_1[index_cfg][7] && !(io_pmp_reg2hw.pmp_cfg_1[index_cfg + 1][7] && io_pmp_reg2hw.pmp_cfg_1[index_cfg + 1][4:3] == riscv::TOR))) cfg_req_mod.write = 1'b0;
-            end else if (index_addr == 8) begin
-              if (io_pmp_reg2hw.pmp_cfg_1[8][7])  cfg_req_mod.write = 1'b0;
-            end
+          % endfor
+          % for i in range(mem_domains):
+          io_pmp_reg_pkg::IO_PMP_PMP_CFG_${i}_OFFSET: begin
+            automatic int index_cfg = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_PMP_CFG_${i}_OFFSET) & ~(${(xlen//8) - 1});
+            for (int i = 0; i < XLEN/8; i++) if (!io_pmp_reg2hw.pmp_cfg_${i}[index_cfg][7]) io_pmp_hw2reg.pmp_cfg_${i}[index_cfg].d  = cfg_req_mod.wdata[i*8+:8];
           end
-          io_pmp_reg_pkg::IO_PMP_PMP_CFG_0_OFFSET: begin
-            automatic int index_cfg = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_PMP_CFG_0_OFFSET) & ~(7);
-            for (int i = 0; i < XLEN/8; i++) if (!io_pmp_reg2hw.pmp_cfg_0[index_cfg][7]) io_pmp_hw2reg.pmp_cfg_0[index_cfg].d  = cfg_req_mod.wdata[i*8+:8];
-          end
-          io_pmp_reg_pkg::IO_PMP_PMP_CFG_1_OFFSET: begin
-            automatic int index_cfg = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_PMP_CFG_1_OFFSET) & ~(7);
-            for (int i = 0; i < XLEN/8; i++) if (!io_pmp_reg2hw.pmp_cfg_1[index_cfg][7]) io_pmp_hw2reg.pmp_cfg_1[index_cfg].d  = cfg_req_mod.wdata[i*8+:8];
-          end
-          io_pmp_reg_pkg::IO_PMP_PMP_SRCMD_1_OFFSET,
+          % endfor
+          % for i in range(nr_masters-1):
+          io_pmp_reg_pkg::IO_PMP_PMP_SRCMD_${i+1}_OFFSET,
+          % endfor
           io_pmp_reg_pkg::IO_PMP_PMP_SRCMD_0_OFFSET: begin
               automatic int index_src_addr = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_PMP_SRCMD_0_OFFSET);
               io_pmp_hw2reg.pmp_srcmd[index_src_addr].d = (cfg_req_mod.wdata & (~io_pmp_reg2hw.iopmp_mdmsk.md)) | io_pmp_reg2hw.pmp_srcmd[index_src_addr].q;
@@ -372,36 +374,23 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
       cfg_rsp_o.ready   = cfg_rsp_mod.ready;
       if (!cfg_req_i.write) begin
         // modify response with granularity > 0
-        if(PMPGranularity > 0 && cfg_req_i.addr >= io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET && cfg_req_i.addr < io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_7_OFFSET + 8) begin
+        % for i in range(mem_domains) :
+        if(PMPGranularity > 0 && cfg_req_i.addr >= io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_${nr_entries*i}_OFFSET && cfg_req_i.addr < io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_${(nr_entries*(i+1))-1}_OFFSET + ${xlen//8}) begin
           automatic int index = '0;
           if (!cfg_req_i.write) begin  // read access
-            index = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_0_OFFSET) >> 3;
+            index = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_${nr_entries*i}_OFFSET) >> 3;
 
-            if(!io_pmp_reg2hw.pmp_cfg_0[index][4] &&  PMPGranularity >= 1) begin  // riscv::OFF or riscv::TOR -> force 0 for bits [G-1:0] where G is the granularity
+            if(!io_pmp_reg2hw.pmp_cfg_${i}[index][4] &&  PMPGranularity >= 1) begin  // riscv::OFF or riscv::TOR -> force 0 for bits [G-1:0] where G is the granularity
               cfg_rsp_o.rdata[PMPGranularity-1:0] = {PMPGranularity{1'b0}};
             end
 
-            if(io_pmp_reg2hw.pmp_cfg_0[index][4] &&  PMPGranularity >= 2) begin // riscv::NAPOT -> force 1 for bits [G-2:0] where G is the granularity
-              cfg_rsp_o.rdata[PMPGranularity-2:0] = {(PMPGranularity - 1) {1'b1}};
-            end
-
-          end
-        end
-        if(PMPGranularity > 0 && cfg_req_i.addr >= io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_8_OFFSET && cfg_req_i.addr < io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_15_OFFSET + 8) begin
-          automatic int index = '0;
-          if (!cfg_req_i.write) begin  // read access
-            index = (cfg_req_i.addr - io_pmp_reg_pkg::IO_PMP_IOPMP_ADDR_8_OFFSET) >> 3;
-
-            if(!io_pmp_reg2hw.pmp_cfg_1[index][4] &&  PMPGranularity >= 1) begin  // riscv::OFF or riscv::TOR -> force 0 for bits [G-1:0] where G is the granularity
-              cfg_rsp_o.rdata[PMPGranularity-1:0] = {PMPGranularity{1'b0}};
-            end
-
-            if(io_pmp_reg2hw.pmp_cfg_1[index][4] &&  PMPGranularity >= 2) begin // riscv::NAPOT -> force 1 for bits [G-2:0] where G is the granularity
+            if(io_pmp_reg2hw.pmp_cfg_${i}[index][4] &&  PMPGranularity >= 2) begin // riscv::NAPOT -> force 1 for bits [G-2:0] where G is the granularity
               cfg_rsp_o.rdata[PMPGranularity-2:0] = {(PMPGranularity - 1) {1'b1}};
             end
 
           end  
         end
+        % endfor
       end
     end
 
@@ -411,38 +400,24 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
     // Rule Checker
     logic [PLEN-1:0] pmp_addr;
     assign pmp_addr = slv_req_i.ar_valid ? pmp_addr_r : pmp_addr_w;
+    % for i in range(mem_domains):
     for(genvar i = 0; i < NR_ENTRIES_PER_MD; i = i + 1) begin
         automatic logic [PMP_LEN-1:0] conf_addr_prev;
 
-        assign conf_addr_prev = (i == 0) ? '0 : io_pmp_reg2hw.iopmp_addr[0+i-1];
+        assign conf_addr_prev = (i == 0) ? '0 : io_pmp_reg2hw.iopmp_addr[${i*nr_entries}+i-1];
 
           pmp_entry #(
               .PLEN    ( PLEN    ),
               .PMP_LEN ( PMP_LEN )
           ) i_pmp_entry(
               .addr_i           ( pmp_addr                                          ),
-              .conf_addr_i      ( io_pmp_reg2hw.iopmp_addr[0+i]                       ),
+              .conf_addr_i      ( io_pmp_reg2hw.iopmp_addr[${i*nr_entries}+i]                       ),
               .conf_addr_prev_i ( conf_addr_prev                                      ),
-              .conf_addr_mode_i ( io_pmp_reg2hw.pmp_cfg_0[0+i][4:3]                    ),
-              .match_o          ( match[0+i]                                          )
+              .conf_addr_mode_i ( io_pmp_reg2hw.pmp_cfg_${i}[${i*nr_entries}+i][4:3]                    ),
+              .match_o          ( match[${i*nr_entries}+i]                                          )
           );
     end
-    for(genvar i = 0; i < NR_ENTRIES_PER_MD; i = i + 1) begin
-        automatic logic [PMP_LEN-1:0] conf_addr_prev;
-
-        assign conf_addr_prev = (i == 0) ? '0 : io_pmp_reg2hw.iopmp_addr[8+i-1];
-
-          pmp_entry #(
-              .PLEN    ( PLEN    ),
-              .PMP_LEN ( PMP_LEN )
-          ) i_pmp_entry(
-              .addr_i           ( pmp_addr                                          ),
-              .conf_addr_i      ( io_pmp_reg2hw.iopmp_addr[8+i]                       ),
-              .conf_addr_prev_i ( conf_addr_prev                                      ),
-              .conf_addr_mode_i ( io_pmp_reg2hw.pmp_cfg_1[8+i][4:3]                    ),
-              .match_o          ( match[8+i]                                          )
-          );
-    end
+    % endfor
 
     // MD discovery, Rule checker evaluation, Execute response.
     riscv::pmp_access_t access_type;
@@ -453,12 +428,11 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
 
     always_comb begin
         automatic logic [((NR_ENTRIES_PER_MD*NR_MD) - 1):0][7:0] iopmp_cfg;
+        % for i in range(mem_domains):
         for(integer i = 0; i < NR_ENTRIES_PER_MD; i++) begin
-          iopmp_cfg[i+0] = io_pmp_hw2reg.pmp_cfg_0[i];
+          iopmp_cfg[i+${i*nr_entries}] = io_pmp_hw2reg.pmp_cfg_${i}[i];
         end
-        for(integer i = 0; i < NR_ENTRIES_PER_MD; i++) begin
-          iopmp_cfg[i+8] = io_pmp_hw2reg.pmp_cfg_1[i];
-        end
+        % endfor
         io_pmp_hw2reg.iopmp_rcd.sid.d      = io_pmp_reg2hw.iopmp_rcd.sid.q & {!clear_illcgt_q, {31{1'h1}}};
         io_pmp_hw2reg.iopmp_rcd.read.d     = io_pmp_reg2hw.iopmp_rcd.read.q;
         io_pmp_hw2reg.iopmp_rcd.length.d   = io_pmp_reg2hw.iopmp_rcd.length.q;
@@ -471,8 +445,16 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
         io_pmp_hw2reg.iopmp_rcd.extra.de   = 1'b1;
         io_pmp_hw2reg.iopmp_rcd.illcgt.de  = 1'b1;
 
+        % if xlen == 32 :
+        io_pmp_hw2reg.iopmp_rcd_lo.d       = io_pmp_reg2hw.iopmp_rcd_lo.q;
+        io_pmp_hw2reg.iopmp_rcd_hi.d       = io_pmp_reg2hw.iopmp_rcd_hi.q;
+        // enable write by default
+        io_pmp_hw2reg.iopmp_rcd_lo.de      = 1'b1;
+        io_pmp_hw2reg.iopmp_rcd_hi.de      = 1'b1;
+        % else :
         io_pmp_hw2reg.iopmp_rcd_addr.d       = io_pmp_reg2hw.iopmp_rcd_addr.q;
         io_pmp_hw2reg.iopmp_rcd_addr.de      = 1'b1;
+        % endif
 
         allow_transaction                  = 1'b0;
         // Evaluate if IOPMP device is enbaled. Otherwise block every transaction.
@@ -494,7 +476,12 @@ module axi_io_pmp import io_pmp_reg_pkg::*; #(
                                         io_pmp_hw2reg.iopmp_rcd.length.d   = '0;
                                         io_pmp_hw2reg.iopmp_rcd.read.d    = (access_type == riscv::ACCESS_READ)? 1'b1: 1'b0;
                                         io_pmp_hw2reg.iopmp_rcd.sid.d     = {{12{1'b0}}, sid};
+                                        % if xlen == 32 :
+                                        io_pmp_hw2reg.iopmp_rcd_lo.d[31:0]  = cfg_req_i.addr[31:0];
+                                        io_pmp_hw2reg.iopmp_rcd_lo.d[63:32]  = cfg_req_i.addr[63:32] ;
+                                        % else :
                                         io_pmp_hw2reg.iopmp_rcd_addr.d = cfg_req_i.addr;
+                                        % endif
                                     end 
                                 end                                
                             end else begin
