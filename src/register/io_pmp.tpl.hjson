@@ -1,0 +1,362 @@
+# I/OPMP register template
+#
+# Parameter (given by python tool)
+#  - mem_domains:    Number of Memory Domains
+#  - nr_entries :    Number of PMP entries per Domain
+#  - nr_masters :    Number of Masters
+#  - xlen       :    Register length
+{
+	name: "io_pmp",
+    clock_primary: "clk_i",
+	reset_primary: "rst_ni",
+	bus_interfaces: [{
+	    protocol: "reg_iface",
+	    direction: "device"
+    }],
+    regwidth: "${xlen}",
+	registers: [
+        % if xlen == 32 :
+        {
+            name: "IOPMP_CTL",
+            desc: "IOPMP Control Register",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "0",
+                    name: "ENABLE",
+                    desc: "IOPMP enable bit",
+                    resval: "0"
+                }
+                {
+                    bits: "30",
+                    name: "RCALL",
+                    desc: "IOPMP rcall",
+                    resval: "0"
+                }
+                {
+                    bits: "31",
+                    name: "L",
+                    desc: "IOPMP lock bit",
+                    resval: "0"
+                }
+            ]
+        },
+        % else :
+        {
+            name: "IOPMP_CTL",
+            desc: "IOPMP Control Register",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "0",
+                    name: "ENABLE",
+                    desc: "IOPMP enable bit",
+                    resval: "0"
+                }
+                {
+                    bits: "62",
+                    name: "RCALL",
+                    desc: "IOPMP rcall",
+                    resval: "0"
+                }
+                {
+                    bits: "63",
+                    name: "L",
+                    desc: "IOPMP lock bit",
+                    resval: "0"
+                }
+            ]
+        },
+        % endif
+        % if xlen == 32 :
+        {
+            name: "IOPMP_RCD",
+            desc: "IOPMP Recorded Register",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "13:0",
+                    name: "SID",
+                    desc: "IOPMP recorded SID bits",
+                    resval: "0"
+                }
+                {
+                    bits: "14",
+                    name: "READ",
+                    desc: "IOPMP recorded read bit",
+                    resval: "0"
+                }
+                {
+                    bits: "27:15",
+                    name: "LENGTH",
+                    desc: "IOPMP recorded length bits",
+                    resval: "0"
+                }
+                {
+                    bits: "30:28",
+                    name: "EXTRA",
+                    desc: "IOPMP recorded extra bits",
+                    resval: "0"
+                }
+                {
+                    bits: "31",
+                    name: "ILLCGT",
+                    desc: "IOPMP illcgt bit",
+                    resval: "0"
+                }
+            ]
+        },
+        % else :
+        {
+            name: "IOPMP_RCD",
+            desc: "IOPMP Recorded Register",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "13:0",
+                    name: "SID",
+                    desc: "IOPMP recorded SID bits",
+                    resval: "0"
+                }
+                {
+                    bits: "14",
+                    name: "READ",
+                    desc: "IOPMP recorded read bit",
+                    resval: "0"
+                }
+                {
+                    bits: "27:15",
+                    name: "LENGTH",
+                    desc: "IOPMP recorded length bits",
+                    resval: "0"
+                }
+                {
+                    bits: "62:60",
+                    name: "EXTRA",
+                    desc: "IOPMP recorded extra bits",
+                    resval: "0"
+                }
+                {
+                    bits: "63",
+                    name: "ILLCGT",
+                    desc: "IOPMP illcgt bit",
+                    resval: "0"
+                }
+            ]
+        },
+        % endif
+        % if xlen == 32 :
+        {
+            name: "IOPMP_RCD_ADDR_LO",
+            desc: "IOPMP Recorded Address Register Lower 32-bits",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                        {
+                            bits: "31:0",
+                            name: "RCD_ADDR_LO",
+                            desc: "Recorded address lower 32-bits",
+                            resval: "0"
+                        }
+                    ]
+        },
+        {
+            name: "IOPMP_RCD_ADDR_HI",
+            desc: "IOPMP Recorded Address Register Higher 32-bits",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                        {
+                            bits: "31:0",
+                            name: "RCD_ADDR_Hi",
+                            desc: "Recorded address higher 32-bits",
+                            resval: "0"
+                        }
+                    ]
+        },
+        % else :
+        {
+            name: "IOPMP_RCD_ADDR",
+            desc: "IOPMP Recorded Address Register",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                        {
+                            bits: "63:0",
+                            name: "RCD_ADDR",
+                            desc: "Recorded address",
+                            resval: "0"
+                        }
+                    ]
+        },
+        % endif
+        % if xlen == 32 :
+        { 
+            name: "IOPMP_MDMSK_LO",
+            desc: "IOPMP Memory domains mask register lower 32-bits",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "MD",
+                        desc: "MD Mask bits",
+                        resval: "0"
+                    }
+                ]
+
+        },
+        { 
+            name: "IOPMP_MDMSK_HI",
+            desc: "IOPMP Memory domains mask register higher 32-bits",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                    {
+                        bits: "30:0",
+                        name: "MD",
+                        desc: "MD Mask bits",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31",
+                        name: "L",
+                        desc: "Memory domains mask register lock bit",
+                        resval: "0"
+                    }
+                ]
+        },
+        % else :
+        { 
+            name: "IOPMP_MDMSK",
+            desc: "IOPMP Memory domains mask register",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                    {
+                        bits: "62:0",
+                        name: "MD",
+                        desc: "MD Mask bits",
+                        resval: "0"
+                    }
+                    {
+                        bits: "63",
+                        name: "L",
+                        desc: "Memory domains mask register lock bit",
+                        resval: "0"
+                    }
+                ]
+        },
+        % endif
+        { 
+            name: "IOPMP_MDLCK",
+            desc: "IOPMP Memory domains lock register",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                    {
+                        bits: "15:0",
+                        name: "F",
+                        desc: "F bits",
+                        resval: "0"
+                    }
+                    {
+                        bits: "${xlen-1}",
+                        name: "L",
+                        desc: "Lock bit",
+                        resval: "0"
+                    }
+                ]
+
+        },
+        {
+            multireg : {
+                name: "IOPMP_MDCFG",
+                desc: "IOPMP memory domain configuration register",
+                count: "${mem_domains}",
+                cname: "PMP",
+                swaccess: "rw",
+                hwaccess: "hro",
+                fields: [
+                    {
+                        bits: "15:0",
+                        name: "T",
+                        desc: "IOPMP configuration T bit",
+                        resval: "0"
+                    }
+                    {
+                        bits: "30:16",
+                        name: "F",
+                        desc: "IOPMP configuration F bit",
+                        resval: "0"
+                    }
+                    {
+                        bits: "${xlen-1}",
+                        name: "L",
+                        desc: "IOPMP configuration Lock bit",
+                        resval: "1"
+                    }
+                ]
+            }
+        },
+        { skipto: "0x200" }
+        { 
+            multireg: {
+                name: "IOPMP_ADDR",
+                desc: "IOPMP address entries",
+                count: "${nr_entries*mem_domains}",
+                cname: "PMP",
+                swaccess: "rw",
+                hwaccess: "hro",
+                fields: [{
+                    bits: "${xlen-1}:0",
+                    name: "PMP_ADDR",
+                    desc: "Single PMP address",
+                    resval: "0"
+                }]
+            },
+        }
+        % for i in range(mem_domains):
+        {
+            multireg: {
+                name: "PMP_CFG_${i}",
+                desc: "PMP configuration",
+                count: "${nr_entries}",
+                cname: "PMP",
+                swaccess: "ro",
+                hwaccess: "hrw",
+                fields: [
+                    {
+                        bits: "7:0",
+                        name: "PMP_CFG",
+                        desc: "Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }",
+                        resval: "0"
+                    }
+                ]
+            }
+        },
+        % endfor
+        {
+            multireg: {
+                name: "PMP_SRCMD",
+                desc: "PMP Memory domain SID ",
+                count: "${nr_masters}",
+                cname: "PMP",
+                swaccess: "ro",
+                hwaccess: "hrw",
+                fields: [
+                    {
+                        bits: "${xlen-1}:0",
+                        name: "PMP_SRCMD",
+                        desc: "PMP_SRCMD bits",
+                        resval: "0"
+                    }
+                ]
+            }
+        }
+    ]
+}

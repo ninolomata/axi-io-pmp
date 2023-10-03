@@ -1,3 +1,26 @@
+# I/OPMP register template
+#
+# Parameter (given by python tool)
+#  - version            :    Version number
+#  - enable_tor         :    Enable TOR support
+#  - enable_sps         :    Enable Secondary permission settings support
+#  - enable_usr_cfg     :    Enable user customized attributes support
+#  - enable_prog_prient :    Enable programmable prio_entry support
+#  - model              :    Indicate the model:
+#                             - 0x0: Full model: the number of MDCFG registers is equal to HWCFG.md_num,
+#                                    all MDCFG registers are readable and writable.
+#                             - 0x1: Rapid-k model: a single MDCFG register to indicate the k value,
+#                                    read only.
+#                             - 0x2: Dynamic-k model: a single MDCFG register to indicate the k value,
+#                                    readable and writable.
+#                             - 0x3: Isolation model: the number of MDCFG registers is equal to
+#                                    HWCFG.md_num, all MDCFG registers are readable and writable.
+#                             - 0x4 Compact-k model: a single MDCFG register to indicate the k value,
+#                                   read only.
+#  - entry_offset       :    Offset address of the IOPMP array
+#  - mem_domains        :    Number of Memory Domains
+#  - nr_entries         :    Number of PMP entries per Domain
+#  - nr_masters         :    Number of Masters
 {
 	name: "io_pmp",
     clock_primary: "clk_i",
@@ -6,48 +29,1617 @@
 	    protocol: "reg_iface",
 	    direction: "device"
     }],
-    regwidth: "64",
-	registers: [{
-	    multireg: {
-            name: "PMP_ADDR",
-            desc: "PMP address",
-            count: "16",
-            cname: "PMP",
-            swaccess: "rw",
-            hwaccess: "hro",
-            fields: [{
-                bits: "53:0",
-                name: "PMP_ADDR",
-                desc: "Single PMP address",
-                resval: "0"
-            }]
-        }},
+    regwidth: "32",
+	registers: [
+    # Info Registers
         {
-        multireg: {
-            name: "PMP_CFG",
-            desc: "PMP configuration",
-            count: "16",
-            cname: "PMP",
-            swaccess: "rw",
+            name: "VERSION",
+            desc: "Indicates the IP version and other vendor details.",
+            swaccess: "ro",
             hwaccess: "hro",
-            fields: [{
-                bits: "7:0",
-                name: "PMP_CFG",
-                desc: "Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }",
-                resval: "0"
-            }]
-        }}
-        #,
-        #{
-        #    name: "PMP_GRANULARITY",
-        #    desc: "PMP granularity",
-        #    swaccess: "rw",
-        #    hwaccess: "hro",
-        #    fields: [{
-        #        bits: "53:0"
-        #        name: "PMP_GRANULARITY"
-        #        desc: "Granularity of PMP"
-        #    }]
-        #}
+            fields: [
+                {
+                    bits: "23:0",
+                    name: "vendor",
+                    desc: "The vendor ID.",
+                    resval: "0"
+                }
+                {
+                    bits: "31:24",
+                    name: "specver",
+                    desc: "The specification version.",
+                    resval: "0"
+                }
+            ]
+        },
+        # TODO: add implementation ID
+        {
+            name: "IMP",
+            desc: "the implementation ID",
+            swaccess: "ro",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "31:0",
+                    name: "impid",
+                    desc: "The implementation ID.",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "HWCFG0",
+            desc: "Indicates the configurations of current IOPMP instance",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "6:0",
+                    name: "md_num",
+                    desc: "Indicate the supported number of MD in the instance.",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    resval: "2"
+                }
+                {
+                    bits: "15:7",
+                    name: "sid_num",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate the supported number of SID in the instance.",
+                    resval: "4"
+                }
+                {
+                    bits: "30:16",
+                    name: "entry_num",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate the supported number of entries in the instance.",
+                    resval: "8"
+                }
+                {
+                    bits: "31",
+                    name: "enable",
+                    desc: '''
+                        Indicate if the IOPMP checks transactions. If it is implemented,
+                        it should be initial to 0 and sticky to 1. If it is not implemented,
+                        it should be wired to 1.
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "HWCFG1",
+            desc: "Indicates the configurations of current IOPMP instance",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "0",
+                    name: "tor_en",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate if TOR is supported.",
+                    resval: "1"
+                }
+                {
+                    bits: "1",
+                    name: "sps_en",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate the secondary permission settings is supported.",
+                    resval: "1"
+                }
+                {
+                    bits: "2",
+                    name: "user_cfg_en",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate the if user customized attributes is supported.",
+                    resval: "0"
+                }
+                {
+                    bits: "3",
+                    name: "prog_prient",
+                    swaccess: "ro",
+                    hwaccess: "hrw",
+                    desc: "A sticiky bit to indicate if prio_entry is programmable.",
+                    resval: "0"
+                }
+                {
+                    bits: "7:4",
+                    name: "model",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Indicate the iopmp instance model",
+                    resval: "0",
+                    enum: [
+                        { value: "0",
+                          name: "Full",
+                          desc: '''
+                            The number of MDCFG registers is equal to HWCFG.md_num,
+                            all MDCFG registers are readable and writable
+                          ''' 
+                        },
+                        { value: "1",
+                          name: "Rapid-k",
+                          desc: '''
+                            A single MDCFG register to indicate the k value, read only
+                          ''' 
+                        },
+                        { value: "2",
+                          name: "Dynamic-k",
+                          desc: '''
+                            A single MDCFG register to indicate the k value, readable and writable.
+                          ''' 
+                        },
+                        { value: "3",
+                          name: "Isolation",
+                          desc: '''
+                            the number of MDCFG registers is equal to HWCFG.md_num,
+                            all MDCFG registers are readable and writable.
+                          ''' 
+                        },
+                        { value: "4",
+                          name: "Compact-k",
+                          desc: '''
+                            a single MDCFG register to indicate the k value, read only.
+                          ''' 
+                        },
+                    ]
+                }
+                {
+                    bits: "31:16",
+                    name: "prio_entry",
+                    desc: '''
+                        Indicate the number of entries matched with priority.
+                        These rules should be placed in the lowest order.
+                        Within these rules, the lower order has a higher priority.
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "ENTRY_OFFSET",
+            desc: "Indicates the internal address offsets of each table.",
+            swaccess: "ro",
+            hwaccess: "hro",
+            fields: [
+                        {
+                            bits: "31:0",
+                            name: "OFFSET",
+                            desc: '''
+                                Indicate the offset address of the IOPMP array from the base of an IOPMP instance,
+                                a.k.a. the address of HWCFG.
+                            ''',
+                            resval: "8192"
+                        }
+                    ]
+        },
+        {
+            name: "ERRREACT",
+            desc: "Indicates errors events in the IOPMP IP.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "0",
+                    name: "l",
+                    desc: "Lock fields to ERRREACT register except ip.",
+                    resval: "0"
+                }
+                {
+                    bits: "1",
+                    name: "ie",
+                    desc: "Enable the interrupt of the IOPMP.",
+                    resval: "0"
+                }
+                {
+                    bits: "2",
+                    name: "ip",
+                    desc: '''
+                        Indicate if an interrupt is pending on read.
+                        for 1, the illegal capture recorder (ERR_XXXX)
+                        won’t be updated even on subsequent violations.
+                        Write 1 clears the bit and the illegal recorder reactivates.
+                        Write 0 causes no effect on the bit.
+                    ''',
+                    resval: "0"
+                }
+                {
+                    bits: "4",
+                    name: "ire",
+                    desc: "To triggle the interrupt on illegal read if ie = 1",
+                    resval: "0"
+                }
+                {
+                    bits: "7:5",
+                    name: "rre",
+                    desc: '''
+                        Response on read illegal access: 
+                        - 0x0: respond a bus error
+                        - 0x1: respond a decode error
+                        - 0x2: respond a success with data, all of which are zeros.
+                        - 0x3: respond a success with data, all of which are ones.
+                        - 0x4~0x7: user defined
+                    ''',
+                    resval: "0"
+                }
+                {
+                    bits: "8",
+                    name: "iwe",
+                    desc: "To triggle the interrupt on illegal write if ie = 1",
+                    resval: "0"
+                }
+                {
+                    bits: "11:9",
+                    name: "rwe",
+                    desc: '''
+                        Response on write illegal access: 
+                        - 0x0: respond a bus error
+                        - 0x1: respond a decode error
+                        - 0x2: respond a success
+                        - 0x3~0x7: user defined
+                    ''',
+                    resval: "0"
+                }
+                {
+                    bits: "15:12",
+                    name: "rsv",
+                    swaccess: "ro",
+                    hwaccess: "hro",
+                    desc: "Must be zero, reserved for future",
+                    resval: "0"
+                }
+                {
+                    bits: "28",
+                    name: "pee",
+                    desc: "Enable to differentiate between a prefetch access and an illegal access",
+                    resval: "0"
+                }
+                {
+                    bits: "31:29",
+                    name: "rpe",
+                    desc: '''
+                        Response on prefetch illegal access: 
+                        - 0x0: respond a bus error
+                        - 0x1: respond a decode error
+                        - 0x2~0x7: user defined
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        # Programming Protection Registers
+        {
+            name: "MDSTALL",
+            desc: '''
+                The MDSTALL(H) is implemented to support atomicity issue while programming the IOPMP,
+                as the IOPMP rule may not be updated in a single transaction.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "30:0",
+                    name: "md",
+                    desc: '''
+                        | Field      | Bit  | R/W |                   Description                      | 
+                        | Exempt     | 0:0  | W   | Stall transactions with exempt selected MDs,       |
+                        |            |      |     | or Stall selected MDs.                             |
+                        | is_stalled | 0:0  | R   | Indicate if the requested stalls have occured      |
+                        | md         | 30:0 | W   | Setting MD[i]=1 selects MD i.                      |
+                        | md         | 30:0 | R   | MD[i]=1 means MD i selected.                       |
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "MDSTALLH",
+            desc: '''
+                The MDSTALL(H) is implemented to support atomicity issue while programming the IOPMP,
+                as the IOPMP rule may not be updated in a single transaction.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "30:0",
+                    name: "md",
+                    desc: '''
+                        | Field      | Bit  | R/W |                   Description                      | 
+                        | md         | 30:0 | W   | Setting MD[i]=1 selects MD i+31.                   |
+                        | md         | 30:0 | R   | MD[i]=1 means MD i+31 selected.                    |
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "SIDSCP",
+            desc: '''
+                The SIDSCP is implemented to support atomicity issue while programming the IOPMP,
+                as the IOPMP rule may not be updated in a single transaction.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "15:0",
+                    name: "sid",
+                    desc: "SID to select",
+                    resval: "0"
+                }
+                {
+                    bits: "31:30",
+                    name: "op_stat",
+                    desc: '''
+                        | Field      | Bit   | R/W |                   Description                      | 
+                        | op         | 31:30 | W   | 0: query, 1: stall transactions associated with    | 
+                        |            |       |     | selected SID, 2: don’t stall transactions          |
+                        |            |       |     | associated with selected SID, and 3: reserved      |
+                        | stat       | 31:30 | R   | 0: SIDSCP not implemented, 1: transactions         |
+                        |            |       |     | associated with selected SID are stalled, 2:       |
+                        |            |       |     | transactions associated with selected SID not are  |
+                        |            |       |     | stalled, and 3: unimplemented or unselectable SID  |
+                    ''',
+                    resval: "0"
+                }
+            ]
+        },
+        # Configuration Protection Registers
+        { 
+            name: "MDLCK",
+            desc: "Bitmap field register low bits to indicate which MDs are locked.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "Lock bit to MDLCK and MDLCKH register.",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] indicates if MD j in SRCiMD is locked for all i.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "MDLCKH",
+            desc: "Bitmap field register high bits to indicate which MDs are locked.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "md",
+                        desc: "md[j] indicates if MD j in SRCiMD is locked for all i.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "MDCFGLCK",
+            desc: "Lock Register for MDCFG table.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "Lock bit to MDLCK and MDLCKH register",
+                        resval: "0"
+                    }
+                    {
+                        bits: "7:1",
+                        name: "f",
+                        desc: '''
+                            Indicate the number of locked MDCFG entries,
+                            MDCFG entry[f-1:0] is locked. SW shall write
+                            a value that is no smaller than current number.
+                        ''',
+                        resval: "0"
+                    }
+                ]
+
+        },
+        { 
+            name: "ENTRYLCK",
+            desc: "Lock register for entry array.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "Lock bit to ENTRYLCK register.",
+                        resval: "0"
+                    }
+                    {
+                        bits: "15:1",
+                        name: "f",
+                        desc: '''
+                            Indicate the number of locked IOPMP entries
+                            IOPMP_ENTRY[f-1:0] is locked.
+                            SW shall write a value that is no smaller than current number.
+                        ''',
+                        resval: "0"
+                    }
+                ]
+
+        },
+        # Error Capture Registers
+        {skipto: "0x60"},
+        { 
+            name: "ERR_REQADDR",
+            desc: "Indicate the errored request address low bits.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "Indicate the errored address low bits.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "ERR_REQADDRH",
+            desc: "Indicate the errored request address high bits.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "Indicate the errored address high bits.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "ERR_REQSID",
+            desc: "Indicate the errored SID.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "15:0",
+                        name: "sid",
+                        desc: "Indicate the errored SID.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "ERR_REQINFO",
+            desc: "Captures more detailed error infomation.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "no_hit",
+                        desc: "Indicate the request hit no entry.",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "par_hit",
+                        desc: "Indicate the request failed due to partial hit.",
+                        resval: "0"
+                    }
+                    {
+                        bits: "10:8",
+                        name: "type_err",
+                        desc: '''
+                            Indicated if it’s a read, write or user field violation.
+                            - 0x0 = read error
+                            - 0x1 = write error
+                            - 0x3 = user_attr error.
+                        ''',
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:6",
+                        name: "eid",
+                        desc: "Indicated the errored entry index.",
+                        resval: "0"
+                    }
+                ]
+        },
+
+        # MDCFG Table
+
+        { skipto: "0x800" },
+        {
+            multireg : {
+                name: "MDCFG",
+                desc: "MDCFG table is a lookup to specify the number of IOPMP entries that is associated with each MD.",
+                count: "2",
+                cname: "IOPMP",
+                swaccess: "ro",
+                hwaccess: "hrw",
+                fields: [
+                    {
+                        bits: "15:0",
+                        name: "t",
+                        desc: ''' 
+                            - Indicate the top range of memory domain m. An IOPMP entry with index j belongs to MD m
+                            - If MDCFG(m-1).t ≤ j < MDCFG(m).t, where m>0. The MD0 owns the IOPMP entries with index j<MD0CFG.t.
+                            - If MDCFG(m-1).t >= MDCFG(m).t, then MD m is empty.
+                            - For rapid-k, dynamic-k and compact-k models, t indicates the number of IOPMP entries belongs to each MD.
+                        ''',
+                        resval: "0"
+                    }
+                ]
+            }
+        },
+
+        # SRCMD Table Registers
+
+        { skipto: "0x1000" },
+
+        { 
+            name: "SRCMD_EN0",
+            desc: "Bitmapped MD enable register low bits for source 0.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "A sticky lock bit. When set, locks SRCMD_EN0, SRCMD_R0 and SRCMD_W0",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates md j is associated with SID 0.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_ENH0",
+            desc: "Bitmapped MD enable register high bits for source 0.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "md[j] = 1 indicates md j is associated with SID 0.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_R0",
+            desc: '''
+                (Optional) Bitmapped MD read enable register low bits for source 0,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 0 has read permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_RH0",
+            desc: '''
+                (Optional)Bitmapped MD read enable register high bits for source 0,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_W0",
+            desc: '''
+                (Optional)Bitmapped MD write enable register low bits for source 0,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 0 has write permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_WH0",
+            desc: '''
+                (Optional)Bitmapped MD write eanble register high bits for source 0,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID 0 has write permission to MD([j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_EN1",
+            desc: "Bitmapped MD enable register low bits for source 1.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "A sticky lock bit. When set, locks SRCMD_EN1, SRCMD_R1 and SRCMD_W1",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates md j is associated with SID 1.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_ENH1",
+            desc: "Bitmapped MD enable register high bits for source 1.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "md[j] = 1 indicates md j is associated with SID 1.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_R1",
+            desc: '''
+                (Optional) Bitmapped MD read enable register low bits for source 1,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 1 has read permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_RH1",
+            desc: '''
+                (Optional)Bitmapped MD read enable register high bits for source 1,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_W1",
+            desc: '''
+                (Optional)Bitmapped MD write enable register low bits for source 1,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 1 has write permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_WH1",
+            desc: '''
+                (Optional)Bitmapped MD write eanble register high bits for source 1,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID 1 has write permission to MD([j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_EN2",
+            desc: "Bitmapped MD enable register low bits for source 2.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "A sticky lock bit. When set, locks SRCMD_EN2, SRCMD_R2 and SRCMD_W2",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates md j is associated with SID 2.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_ENH2",
+            desc: "Bitmapped MD enable register high bits for source 2.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "md[j] = 1 indicates md j is associated with SID 2.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_R2",
+            desc: '''
+                (Optional) Bitmapped MD read enable register low bits for source 2,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 2 has read permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_RH2",
+            desc: '''
+                (Optional)Bitmapped MD read enable register high bits for source 2,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_W2",
+            desc: '''
+                (Optional)Bitmapped MD write enable register low bits for source 2,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 2 has write permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_WH2",
+            desc: '''
+                (Optional)Bitmapped MD write eanble register high bits for source 2,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID 2 has write permission to MD([j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_EN3",
+            desc: "Bitmapped MD enable register low bits for source 3.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "l",
+                        desc: "A sticky lock bit. When set, locks SRCMD_EN3, SRCMD_R3 and SRCMD_W3",
+                        resval: "0"
+                    }
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates md j is associated with SID 3.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_ENH3",
+            desc: "Bitmapped MD enable register high bits for source 3.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "md[j] = 1 indicates md j is associated with SID 3.",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_R3",
+            desc: '''
+                (Optional) Bitmapped MD read enable register low bits for source 3,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 3 has read permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_RH3",
+            desc: '''
+                (Optional)Bitmapped MD read enable register high bits for source 3,
+                it indicate source s read permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_W3",
+            desc: '''
+                (Optional)Bitmapped MD write enable register low bits for source 3,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:1",
+                        name: "md",
+                        desc: "md[j] = 1 indicates SID 3 has write permission to the corresponding MD[j].",
+                        resval: "0"
+                    }
+                ]
+        },
+        { 
+            name: "SRCMD_WH3",
+            desc: '''
+                (Optional)Bitmapped MD write eanble register high bits for source 3,
+                it indicate source s write permission on MDs.
+            ''',
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "mdh",
+                        desc: "mdh[j] = 1 indicates SID 3 has write permission to MD([j]+31).",
+                        resval: "0"
+                    }
+                ]
+        },
+
+
+        # Entry Array Registers
+        {skipto: "8192"},
+        { 
+            name: "ENTRY_ADDR0",
+            desc: "IOPMP entrie number 0 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 0.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH0",
+            desc:  "IOPMP entrie number 0 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 0.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG0",
+            desc: "IOPMP entrie number 0 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 0",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 0",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 0",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 0: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG0",
+            desc: "Users defined additional IOPMP check rules entriy 0",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 0",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR1",
+            desc: "IOPMP entrie number 1 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 1.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH1",
+            desc:  "IOPMP entrie number 1 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 1.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG1",
+            desc: "IOPMP entrie number 1 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 1",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 1",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 1",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 1: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG1",
+            desc: "Users defined additional IOPMP check rules entriy 1",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 1",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR2",
+            desc: "IOPMP entrie number 2 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 2.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH2",
+            desc:  "IOPMP entrie number 2 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 2.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG2",
+            desc: "IOPMP entrie number 2 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 2",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 2",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 2",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 2: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG2",
+            desc: "Users defined additional IOPMP check rules entriy 2",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 2",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR3",
+            desc: "IOPMP entrie number 3 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 3.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH3",
+            desc:  "IOPMP entrie number 3 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 3.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG3",
+            desc: "IOPMP entrie number 3 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 3",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 3",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 3",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 3: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG3",
+            desc: "Users defined additional IOPMP check rules entriy 3",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 3",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR4",
+            desc: "IOPMP entrie number 4 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 4.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH4",
+            desc:  "IOPMP entrie number 4 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 4.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG4",
+            desc: "IOPMP entrie number 4 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 4",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 4",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 4",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 4: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG4",
+            desc: "Users defined additional IOPMP check rules entriy 4",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 4",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR5",
+            desc: "IOPMP entrie number 5 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 5.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH5",
+            desc:  "IOPMP entrie number 5 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 5.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG5",
+            desc: "IOPMP entrie number 5 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 5",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 5",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 5",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 5: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG5",
+            desc: "Users defined additional IOPMP check rules entriy 5",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 5",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR6",
+            desc: "IOPMP entrie number 6 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 6.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH6",
+            desc:  "IOPMP entrie number 6 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 6.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG6",
+            desc: "IOPMP entrie number 6 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 6",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 6",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 6",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 6: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG6",
+            desc: "Users defined additional IOPMP check rules entriy 6",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 6",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDR7",
+            desc: "IOPMP entrie number 7 low bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addr",
+                        desc: "The low bits physical address of protected memory region entrie 7.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_ADDRH7",
+            desc:  "IOPMP entrie number 7 high bits of physical address of protected memory region",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "addrh",
+                        desc: "The high bits physical address of protected memory region entrie 7.",
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_CFG7",
+            desc: "IOPMP entrie number 7 configuration register.",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "0",
+                        name: "r",
+                        desc: "The read permission to protected memory region entrie 7",
+                        resval: "0"
+                    }
+                    {
+                        bits: "1",
+                        name: "w",
+                        desc: "The write permission to protected memory region entrie 7",
+                        resval: "0"
+                    }
+                    {
+                        bits: "0",
+                        name: "x",
+                        desc: "The execute permission to protected memory region entrie 7",
+                        resval: "0"
+                    }
+                    {
+                        bits: "4:3",
+                        name: "a",
+                        desc: '''
+                            The address mode of the IOPMP entry 7: 
+                            - 0x0: OFF
+                            - 0x1: TOR
+                            - 0x2: NA4
+                            - 0x3: NAPOT
+                        ''',
+                        resval: "0"
+                    }
+            ]
+        },
+        { 
+            name: "ENTRY_USER_CFG7",
+            desc: "Users defined additional IOPMP check rules entriy 7",
+            swaccess: "ro",
+            hwaccess: "hrw",
+            fields: [
+                    {
+                        bits: "31:0",
+                        name: "im",
+                        desc: "User customized permission field entry 7",
+                        resval: "0"
+                    }
+            ]
+        },
     ]
 }
+

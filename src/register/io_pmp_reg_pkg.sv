@@ -7,84 +7,1463 @@
 package io_pmp_reg_pkg;
 
   // Address widths within the block
-  parameter int BlockAw = 8;
+  parameter int BlockAw = 14;
 
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////
 
-  typedef struct packed {logic [53:0] q;} io_pmp_reg2hw_pmp_addr_mreg_t;
+  typedef struct packed {
+    struct packed {
+      logic [23:0] q;
+    } vendor;
+    struct packed {
+      logic [7:0]  q;
+    } specver;
+  } io_pmp_reg2hw_version_reg_t;
 
-  typedef struct packed {logic [7:0] q;} io_pmp_reg2hw_pmp_cfg_mreg_t;
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_imp_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [6:0]  q;
+    } md_num;
+    struct packed {
+      logic [8:0]  q;
+    } sid_num;
+    struct packed {
+      logic [14:0] q;
+    } entry_num;
+    struct packed {
+      logic        q;
+    } enable;
+  } io_pmp_reg2hw_hwcfg0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } tor_en;
+    struct packed {
+      logic        q;
+    } sps_en;
+    struct packed {
+      logic        q;
+    } user_cfg_en;
+    struct packed {
+      logic        q;
+    } prog_prient;
+    struct packed {
+      logic [3:0]  q;
+    } model;
+    struct packed {
+      logic [15:0] q;
+    } prio_entry;
+  } io_pmp_reg2hw_hwcfg1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_offset_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic        q;
+    } ie;
+    struct packed {
+      logic        q;
+    } ip;
+    struct packed {
+      logic        q;
+    } ire;
+    struct packed {
+      logic [2:0]  q;
+    } rre;
+    struct packed {
+      logic        q;
+    } iwe;
+    struct packed {
+      logic [2:0]  q;
+    } rwe;
+    struct packed {
+      logic [3:0]  q;
+    } rsv;
+    struct packed {
+      logic        q;
+    } pee;
+    struct packed {
+      logic [2:0]  q;
+    } rpe;
+  } io_pmp_reg2hw_errreact_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_mdstall_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_mdstallh_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } sid;
+    struct packed {
+      logic [1:0]  q;
+    } op_stat;
+  } io_pmp_reg2hw_sidscp_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [30:0] q;
+    } md;
+  } io_pmp_reg2hw_mdlck_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_mdlckh_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [6:0]  q;
+    } f;
+  } io_pmp_reg2hw_mdcfglck_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [14:0] q;
+    } f;
+  } io_pmp_reg2hw_entrylck_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_err_reqaddr_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_err_reqaddrh_reg_t;
+
+  typedef struct packed {
+    logic [15:0] q;
+  } io_pmp_reg2hw_err_reqsid_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } no_hit;
+    struct packed {
+      logic        q;
+    } par_hit;
+    struct packed {
+      logic [25:0] q;
+    } eid;
+    struct packed {
+      logic [2:0]  q;
+    } type_err;
+  } io_pmp_reg2hw_err_reqinfo_reg_t;
+
+  typedef struct packed {
+    logic [15:0] q;
+  } io_pmp_reg2hw_mdcfg_mreg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [30:0] q;
+    } md;
+  } io_pmp_reg2hw_srcmd_en0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_enh0_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_r0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_rh0_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_w0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_wh0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [30:0] q;
+    } md;
+  } io_pmp_reg2hw_srcmd_en1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_enh1_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_r1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_rh1_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_w1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_wh1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [30:0] q;
+    } md;
+  } io_pmp_reg2hw_srcmd_en2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_enh2_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_r2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_rh2_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_w2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_wh2_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } l;
+    struct packed {
+      logic [30:0] q;
+    } md;
+  } io_pmp_reg2hw_srcmd_en3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_enh3_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_r3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_rh3_reg_t;
+
+  typedef struct packed {
+    logic [30:0] q;
+  } io_pmp_reg2hw_srcmd_w3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_srcmd_wh3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh2_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh3_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh4_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh5_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh6_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addr7_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_addrh7_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+    } r;
+    struct packed {
+      logic        q;
+    } x;
+    struct packed {
+      logic        q;
+    } w;
+    struct packed {
+      logic [1:0]  q;
+    } a;
+  } io_pmp_reg2hw_entry_cfg7_reg_t;
+
+  typedef struct packed {
+    logic [31:0] q;
+  } io_pmp_reg2hw_entry_user_cfg7_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } enable;
+  } io_pmp_hw2reg_hwcfg0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } prog_prient;
+    struct packed {
+      logic [15:0] d;
+      logic        de;
+    } prio_entry;
+  } io_pmp_hw2reg_hwcfg1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic        d;
+      logic        de;
+    } ie;
+    struct packed {
+      logic        d;
+      logic        de;
+    } ip;
+    struct packed {
+      logic        d;
+      logic        de;
+    } ire;
+    struct packed {
+      logic [2:0]  d;
+      logic        de;
+    } rre;
+    struct packed {
+      logic        d;
+      logic        de;
+    } iwe;
+    struct packed {
+      logic [2:0]  d;
+      logic        de;
+    } rwe;
+    struct packed {
+      logic        d;
+      logic        de;
+    } pee;
+    struct packed {
+      logic [2:0]  d;
+      logic        de;
+    } rpe;
+  } io_pmp_hw2reg_errreact_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_mdstall_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_mdstallh_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] d;
+      logic        de;
+    } sid;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } op_stat;
+  } io_pmp_hw2reg_sidscp_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [30:0] d;
+      logic        de;
+    } md;
+  } io_pmp_hw2reg_mdlck_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_mdlckh_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [6:0]  d;
+      logic        de;
+    } f;
+  } io_pmp_hw2reg_mdcfglck_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [14:0] d;
+      logic        de;
+    } f;
+  } io_pmp_hw2reg_entrylck_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_err_reqaddr_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_err_reqaddrh_reg_t;
+
+  typedef struct packed {
+    logic [15:0] d;
+    logic        de;
+  } io_pmp_hw2reg_err_reqsid_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } no_hit;
+    struct packed {
+      logic        d;
+      logic        de;
+    } par_hit;
+    struct packed {
+      logic [25:0] d;
+      logic        de;
+    } eid;
+    struct packed {
+      logic [2:0]  d;
+      logic        de;
+    } type_err;
+  } io_pmp_hw2reg_err_reqinfo_reg_t;
+
+  typedef struct packed {
+    logic [15:0] d;
+    logic        de;
+  } io_pmp_hw2reg_mdcfg_mreg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [30:0] d;
+      logic        de;
+    } md;
+  } io_pmp_hw2reg_srcmd_en0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_enh0_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_r0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_rh0_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_w0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_wh0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [30:0] d;
+      logic        de;
+    } md;
+  } io_pmp_hw2reg_srcmd_en1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_enh1_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_r1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_rh1_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_w1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_wh1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [30:0] d;
+      logic        de;
+    } md;
+  } io_pmp_hw2reg_srcmd_en2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_enh2_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_r2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_rh2_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_w2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_wh2_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } l;
+    struct packed {
+      logic [30:0] d;
+      logic        de;
+    } md;
+  } io_pmp_hw2reg_srcmd_en3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_enh3_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_r3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_rh3_reg_t;
+
+  typedef struct packed {
+    logic [30:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_w3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_srcmd_wh3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg0_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg1_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh2_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg2_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh3_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg3_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh4_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg4_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh5_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg5_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh6_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg6_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addr7_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_addrh7_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        d;
+      logic        de;
+    } r;
+    struct packed {
+      logic        d;
+      logic        de;
+    } x;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w;
+    struct packed {
+      logic [1:0]  d;
+      logic        de;
+    } a;
+  } io_pmp_hw2reg_entry_cfg7_reg_t;
+
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } io_pmp_hw2reg_entry_user_cfg7_reg_t;
 
   // Register -> HW type
   typedef struct packed {
-    io_pmp_reg2hw_pmp_addr_mreg_t [15:0] pmp_addr;  // [991:128]
-    io_pmp_reg2hw_pmp_cfg_mreg_t [15:0]  pmp_cfg;   // [127:0]
+    io_pmp_reg2hw_version_reg_t version; // [2049:2018]
+    io_pmp_reg2hw_imp_reg_t imp; // [2017:1986]
+    io_pmp_reg2hw_hwcfg0_reg_t hwcfg0; // [1985:1954]
+    io_pmp_reg2hw_hwcfg1_reg_t hwcfg1; // [1953:1930]
+    io_pmp_reg2hw_entry_offset_reg_t entry_offset; // [1929:1898]
+    io_pmp_reg2hw_errreact_reg_t errreact; // [1897:1879]
+    io_pmp_reg2hw_mdstall_reg_t mdstall; // [1878:1848]
+    io_pmp_reg2hw_mdstallh_reg_t mdstallh; // [1847:1817]
+    io_pmp_reg2hw_sidscp_reg_t sidscp; // [1816:1799]
+    io_pmp_reg2hw_mdlck_reg_t mdlck; // [1798:1767]
+    io_pmp_reg2hw_mdlckh_reg_t mdlckh; // [1766:1735]
+    io_pmp_reg2hw_mdcfglck_reg_t mdcfglck; // [1734:1727]
+    io_pmp_reg2hw_entrylck_reg_t entrylck; // [1726:1711]
+    io_pmp_reg2hw_err_reqaddr_reg_t err_reqaddr; // [1710:1679]
+    io_pmp_reg2hw_err_reqaddrh_reg_t err_reqaddrh; // [1678:1647]
+    io_pmp_reg2hw_err_reqsid_reg_t err_reqsid; // [1646:1631]
+    io_pmp_reg2hw_err_reqinfo_reg_t err_reqinfo; // [1630:1600]
+    io_pmp_reg2hw_mdcfg_mreg_t [1:0] mdcfg; // [1599:1568]
+    io_pmp_reg2hw_srcmd_en0_reg_t srcmd_en0; // [1567:1536]
+    io_pmp_reg2hw_srcmd_enh0_reg_t srcmd_enh0; // [1535:1504]
+    io_pmp_reg2hw_srcmd_r0_reg_t srcmd_r0; // [1503:1473]
+    io_pmp_reg2hw_srcmd_rh0_reg_t srcmd_rh0; // [1472:1441]
+    io_pmp_reg2hw_srcmd_w0_reg_t srcmd_w0; // [1440:1410]
+    io_pmp_reg2hw_srcmd_wh0_reg_t srcmd_wh0; // [1409:1378]
+    io_pmp_reg2hw_srcmd_en1_reg_t srcmd_en1; // [1377:1346]
+    io_pmp_reg2hw_srcmd_enh1_reg_t srcmd_enh1; // [1345:1314]
+    io_pmp_reg2hw_srcmd_r1_reg_t srcmd_r1; // [1313:1283]
+    io_pmp_reg2hw_srcmd_rh1_reg_t srcmd_rh1; // [1282:1251]
+    io_pmp_reg2hw_srcmd_w1_reg_t srcmd_w1; // [1250:1220]
+    io_pmp_reg2hw_srcmd_wh1_reg_t srcmd_wh1; // [1219:1188]
+    io_pmp_reg2hw_srcmd_en2_reg_t srcmd_en2; // [1187:1156]
+    io_pmp_reg2hw_srcmd_enh2_reg_t srcmd_enh2; // [1155:1124]
+    io_pmp_reg2hw_srcmd_r2_reg_t srcmd_r2; // [1123:1093]
+    io_pmp_reg2hw_srcmd_rh2_reg_t srcmd_rh2; // [1092:1061]
+    io_pmp_reg2hw_srcmd_w2_reg_t srcmd_w2; // [1060:1030]
+    io_pmp_reg2hw_srcmd_wh2_reg_t srcmd_wh2; // [1029:998]
+    io_pmp_reg2hw_srcmd_en3_reg_t srcmd_en3; // [997:966]
+    io_pmp_reg2hw_srcmd_enh3_reg_t srcmd_enh3; // [965:934]
+    io_pmp_reg2hw_srcmd_r3_reg_t srcmd_r3; // [933:903]
+    io_pmp_reg2hw_srcmd_rh3_reg_t srcmd_rh3; // [902:871]
+    io_pmp_reg2hw_srcmd_w3_reg_t srcmd_w3; // [870:840]
+    io_pmp_reg2hw_srcmd_wh3_reg_t srcmd_wh3; // [839:808]
+    io_pmp_reg2hw_entry_addr0_reg_t entry_addr0; // [807:776]
+    io_pmp_reg2hw_entry_addrh0_reg_t entry_addrh0; // [775:744]
+    io_pmp_reg2hw_entry_cfg0_reg_t entry_cfg0; // [743:739]
+    io_pmp_reg2hw_entry_user_cfg0_reg_t entry_user_cfg0; // [738:707]
+    io_pmp_reg2hw_entry_addr1_reg_t entry_addr1; // [706:675]
+    io_pmp_reg2hw_entry_addrh1_reg_t entry_addrh1; // [674:643]
+    io_pmp_reg2hw_entry_cfg1_reg_t entry_cfg1; // [642:638]
+    io_pmp_reg2hw_entry_user_cfg1_reg_t entry_user_cfg1; // [637:606]
+    io_pmp_reg2hw_entry_addr2_reg_t entry_addr2; // [605:574]
+    io_pmp_reg2hw_entry_addrh2_reg_t entry_addrh2; // [573:542]
+    io_pmp_reg2hw_entry_cfg2_reg_t entry_cfg2; // [541:537]
+    io_pmp_reg2hw_entry_user_cfg2_reg_t entry_user_cfg2; // [536:505]
+    io_pmp_reg2hw_entry_addr3_reg_t entry_addr3; // [504:473]
+    io_pmp_reg2hw_entry_addrh3_reg_t entry_addrh3; // [472:441]
+    io_pmp_reg2hw_entry_cfg3_reg_t entry_cfg3; // [440:436]
+    io_pmp_reg2hw_entry_user_cfg3_reg_t entry_user_cfg3; // [435:404]
+    io_pmp_reg2hw_entry_addr4_reg_t entry_addr4; // [403:372]
+    io_pmp_reg2hw_entry_addrh4_reg_t entry_addrh4; // [371:340]
+    io_pmp_reg2hw_entry_cfg4_reg_t entry_cfg4; // [339:335]
+    io_pmp_reg2hw_entry_user_cfg4_reg_t entry_user_cfg4; // [334:303]
+    io_pmp_reg2hw_entry_addr5_reg_t entry_addr5; // [302:271]
+    io_pmp_reg2hw_entry_addrh5_reg_t entry_addrh5; // [270:239]
+    io_pmp_reg2hw_entry_cfg5_reg_t entry_cfg5; // [238:234]
+    io_pmp_reg2hw_entry_user_cfg5_reg_t entry_user_cfg5; // [233:202]
+    io_pmp_reg2hw_entry_addr6_reg_t entry_addr6; // [201:170]
+    io_pmp_reg2hw_entry_addrh6_reg_t entry_addrh6; // [169:138]
+    io_pmp_reg2hw_entry_cfg6_reg_t entry_cfg6; // [137:133]
+    io_pmp_reg2hw_entry_user_cfg6_reg_t entry_user_cfg6; // [132:101]
+    io_pmp_reg2hw_entry_addr7_reg_t entry_addr7; // [100:69]
+    io_pmp_reg2hw_entry_addrh7_reg_t entry_addrh7; // [68:37]
+    io_pmp_reg2hw_entry_cfg7_reg_t entry_cfg7; // [36:32]
+    io_pmp_reg2hw_entry_user_cfg7_reg_t entry_user_cfg7; // [31:0]
   } io_pmp_reg2hw_t;
 
+  // HW -> register type
+  typedef struct packed {
+    io_pmp_hw2reg_hwcfg0_reg_t hwcfg0; // [2027:2026]
+    io_pmp_hw2reg_hwcfg1_reg_t hwcfg1; // [2025:2007]
+    io_pmp_hw2reg_errreact_reg_t errreact; // [2006:1983]
+    io_pmp_hw2reg_mdstall_reg_t mdstall; // [1982:1951]
+    io_pmp_hw2reg_mdstallh_reg_t mdstallh; // [1950:1919]
+    io_pmp_hw2reg_sidscp_reg_t sidscp; // [1918:1899]
+    io_pmp_hw2reg_mdlck_reg_t mdlck; // [1898:1865]
+    io_pmp_hw2reg_mdlckh_reg_t mdlckh; // [1864:1832]
+    io_pmp_hw2reg_mdcfglck_reg_t mdcfglck; // [1831:1822]
+    io_pmp_hw2reg_entrylck_reg_t entrylck; // [1821:1804]
+    io_pmp_hw2reg_err_reqaddr_reg_t err_reqaddr; // [1803:1771]
+    io_pmp_hw2reg_err_reqaddrh_reg_t err_reqaddrh; // [1770:1738]
+    io_pmp_hw2reg_err_reqsid_reg_t err_reqsid; // [1737:1721]
+    io_pmp_hw2reg_err_reqinfo_reg_t err_reqinfo; // [1720:1686]
+    io_pmp_hw2reg_mdcfg_mreg_t [1:0] mdcfg; // [1685:1652]
+    io_pmp_hw2reg_srcmd_en0_reg_t srcmd_en0; // [1651:1618]
+    io_pmp_hw2reg_srcmd_enh0_reg_t srcmd_enh0; // [1617:1585]
+    io_pmp_hw2reg_srcmd_r0_reg_t srcmd_r0; // [1584:1553]
+    io_pmp_hw2reg_srcmd_rh0_reg_t srcmd_rh0; // [1552:1520]
+    io_pmp_hw2reg_srcmd_w0_reg_t srcmd_w0; // [1519:1488]
+    io_pmp_hw2reg_srcmd_wh0_reg_t srcmd_wh0; // [1487:1455]
+    io_pmp_hw2reg_srcmd_en1_reg_t srcmd_en1; // [1454:1421]
+    io_pmp_hw2reg_srcmd_enh1_reg_t srcmd_enh1; // [1420:1388]
+    io_pmp_hw2reg_srcmd_r1_reg_t srcmd_r1; // [1387:1356]
+    io_pmp_hw2reg_srcmd_rh1_reg_t srcmd_rh1; // [1355:1323]
+    io_pmp_hw2reg_srcmd_w1_reg_t srcmd_w1; // [1322:1291]
+    io_pmp_hw2reg_srcmd_wh1_reg_t srcmd_wh1; // [1290:1258]
+    io_pmp_hw2reg_srcmd_en2_reg_t srcmd_en2; // [1257:1224]
+    io_pmp_hw2reg_srcmd_enh2_reg_t srcmd_enh2; // [1223:1191]
+    io_pmp_hw2reg_srcmd_r2_reg_t srcmd_r2; // [1190:1159]
+    io_pmp_hw2reg_srcmd_rh2_reg_t srcmd_rh2; // [1158:1126]
+    io_pmp_hw2reg_srcmd_w2_reg_t srcmd_w2; // [1125:1094]
+    io_pmp_hw2reg_srcmd_wh2_reg_t srcmd_wh2; // [1093:1061]
+    io_pmp_hw2reg_srcmd_en3_reg_t srcmd_en3; // [1060:1027]
+    io_pmp_hw2reg_srcmd_enh3_reg_t srcmd_enh3; // [1026:994]
+    io_pmp_hw2reg_srcmd_r3_reg_t srcmd_r3; // [993:962]
+    io_pmp_hw2reg_srcmd_rh3_reg_t srcmd_rh3; // [961:929]
+    io_pmp_hw2reg_srcmd_w3_reg_t srcmd_w3; // [928:897]
+    io_pmp_hw2reg_srcmd_wh3_reg_t srcmd_wh3; // [896:864]
+    io_pmp_hw2reg_entry_addr0_reg_t entry_addr0; // [863:831]
+    io_pmp_hw2reg_entry_addrh0_reg_t entry_addrh0; // [830:798]
+    io_pmp_hw2reg_entry_cfg0_reg_t entry_cfg0; // [797:789]
+    io_pmp_hw2reg_entry_user_cfg0_reg_t entry_user_cfg0; // [788:756]
+    io_pmp_hw2reg_entry_addr1_reg_t entry_addr1; // [755:723]
+    io_pmp_hw2reg_entry_addrh1_reg_t entry_addrh1; // [722:690]
+    io_pmp_hw2reg_entry_cfg1_reg_t entry_cfg1; // [689:681]
+    io_pmp_hw2reg_entry_user_cfg1_reg_t entry_user_cfg1; // [680:648]
+    io_pmp_hw2reg_entry_addr2_reg_t entry_addr2; // [647:615]
+    io_pmp_hw2reg_entry_addrh2_reg_t entry_addrh2; // [614:582]
+    io_pmp_hw2reg_entry_cfg2_reg_t entry_cfg2; // [581:573]
+    io_pmp_hw2reg_entry_user_cfg2_reg_t entry_user_cfg2; // [572:540]
+    io_pmp_hw2reg_entry_addr3_reg_t entry_addr3; // [539:507]
+    io_pmp_hw2reg_entry_addrh3_reg_t entry_addrh3; // [506:474]
+    io_pmp_hw2reg_entry_cfg3_reg_t entry_cfg3; // [473:465]
+    io_pmp_hw2reg_entry_user_cfg3_reg_t entry_user_cfg3; // [464:432]
+    io_pmp_hw2reg_entry_addr4_reg_t entry_addr4; // [431:399]
+    io_pmp_hw2reg_entry_addrh4_reg_t entry_addrh4; // [398:366]
+    io_pmp_hw2reg_entry_cfg4_reg_t entry_cfg4; // [365:357]
+    io_pmp_hw2reg_entry_user_cfg4_reg_t entry_user_cfg4; // [356:324]
+    io_pmp_hw2reg_entry_addr5_reg_t entry_addr5; // [323:291]
+    io_pmp_hw2reg_entry_addrh5_reg_t entry_addrh5; // [290:258]
+    io_pmp_hw2reg_entry_cfg5_reg_t entry_cfg5; // [257:249]
+    io_pmp_hw2reg_entry_user_cfg5_reg_t entry_user_cfg5; // [248:216]
+    io_pmp_hw2reg_entry_addr6_reg_t entry_addr6; // [215:183]
+    io_pmp_hw2reg_entry_addrh6_reg_t entry_addrh6; // [182:150]
+    io_pmp_hw2reg_entry_cfg6_reg_t entry_cfg6; // [149:141]
+    io_pmp_hw2reg_entry_user_cfg6_reg_t entry_user_cfg6; // [140:108]
+    io_pmp_hw2reg_entry_addr7_reg_t entry_addr7; // [107:75]
+    io_pmp_hw2reg_entry_addrh7_reg_t entry_addrh7; // [74:42]
+    io_pmp_hw2reg_entry_cfg7_reg_t entry_cfg7; // [41:33]
+    io_pmp_hw2reg_entry_user_cfg7_reg_t entry_user_cfg7; // [32:0]
+  } io_pmp_hw2reg_t;
+
   // Register offsets
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_0_OFFSET = 8'h0;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_1_OFFSET = 8'h8;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_2_OFFSET = 8'h10;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_3_OFFSET = 8'h18;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_4_OFFSET = 8'h20;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_5_OFFSET = 8'h28;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_6_OFFSET = 8'h30;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_7_OFFSET = 8'h38;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_8_OFFSET = 8'h40;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_9_OFFSET = 8'h48;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_10_OFFSET = 8'h50;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_11_OFFSET = 8'h58;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_12_OFFSET = 8'h60;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_13_OFFSET = 8'h68;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_14_OFFSET = 8'h70;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_ADDR_15_OFFSET = 8'h78;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_CFG_0_OFFSET = 8'h80;
-  parameter logic [BlockAw-1:0] IO_PMP_PMP_CFG_1_OFFSET = 8'h88;
+  parameter logic [BlockAw-1:0] IO_PMP_VERSION_OFFSET = 14'h 0;
+  parameter logic [BlockAw-1:0] IO_PMP_IMP_OFFSET = 14'h 4;
+  parameter logic [BlockAw-1:0] IO_PMP_HWCFG0_OFFSET = 14'h 8;
+  parameter logic [BlockAw-1:0] IO_PMP_HWCFG1_OFFSET = 14'h c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_OFFSET_OFFSET = 14'h 10;
+  parameter logic [BlockAw-1:0] IO_PMP_ERRREACT_OFFSET = 14'h 14;
+  parameter logic [BlockAw-1:0] IO_PMP_MDSTALL_OFFSET = 14'h 18;
+  parameter logic [BlockAw-1:0] IO_PMP_MDSTALLH_OFFSET = 14'h 1c;
+  parameter logic [BlockAw-1:0] IO_PMP_SIDSCP_OFFSET = 14'h 20;
+  parameter logic [BlockAw-1:0] IO_PMP_MDLCK_OFFSET = 14'h 24;
+  parameter logic [BlockAw-1:0] IO_PMP_MDLCKH_OFFSET = 14'h 28;
+  parameter logic [BlockAw-1:0] IO_PMP_MDCFGLCK_OFFSET = 14'h 2c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRYLCK_OFFSET = 14'h 30;
+  parameter logic [BlockAw-1:0] IO_PMP_ERR_REQADDR_OFFSET = 14'h 60;
+  parameter logic [BlockAw-1:0] IO_PMP_ERR_REQADDRH_OFFSET = 14'h 64;
+  parameter logic [BlockAw-1:0] IO_PMP_ERR_REQSID_OFFSET = 14'h 68;
+  parameter logic [BlockAw-1:0] IO_PMP_ERR_REQINFO_OFFSET = 14'h 6c;
+  parameter logic [BlockAw-1:0] IO_PMP_MDCFG_OFFSET = 14'h 800;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_EN0_OFFSET = 14'h 1000;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_ENH0_OFFSET = 14'h 1004;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_R0_OFFSET = 14'h 1008;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_RH0_OFFSET = 14'h 100c;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_W0_OFFSET = 14'h 1010;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_WH0_OFFSET = 14'h 1014;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_EN1_OFFSET = 14'h 1018;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_ENH1_OFFSET = 14'h 101c;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_R1_OFFSET = 14'h 1020;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_RH1_OFFSET = 14'h 1024;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_W1_OFFSET = 14'h 1028;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_WH1_OFFSET = 14'h 102c;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_EN2_OFFSET = 14'h 1030;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_ENH2_OFFSET = 14'h 1034;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_R2_OFFSET = 14'h 1038;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_RH2_OFFSET = 14'h 103c;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_W2_OFFSET = 14'h 1040;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_WH2_OFFSET = 14'h 1044;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_EN3_OFFSET = 14'h 1048;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_ENH3_OFFSET = 14'h 104c;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_R3_OFFSET = 14'h 1050;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_RH3_OFFSET = 14'h 1054;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_W3_OFFSET = 14'h 1058;
+  parameter logic [BlockAw-1:0] IO_PMP_SRCMD_WH3_OFFSET = 14'h 105c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR0_OFFSET = 14'h 2000;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH0_OFFSET = 14'h 2004;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG0_OFFSET = 14'h 2008;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG0_OFFSET = 14'h 200c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR1_OFFSET = 14'h 2010;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH1_OFFSET = 14'h 2014;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG1_OFFSET = 14'h 2018;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG1_OFFSET = 14'h 201c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR2_OFFSET = 14'h 2020;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH2_OFFSET = 14'h 2024;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG2_OFFSET = 14'h 2028;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG2_OFFSET = 14'h 202c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR3_OFFSET = 14'h 2030;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH3_OFFSET = 14'h 2034;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG3_OFFSET = 14'h 2038;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG3_OFFSET = 14'h 203c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR4_OFFSET = 14'h 2040;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH4_OFFSET = 14'h 2044;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG4_OFFSET = 14'h 2048;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG4_OFFSET = 14'h 204c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR5_OFFSET = 14'h 2050;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH5_OFFSET = 14'h 2054;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG5_OFFSET = 14'h 2058;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG5_OFFSET = 14'h 205c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR6_OFFSET = 14'h 2060;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH6_OFFSET = 14'h 2064;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG6_OFFSET = 14'h 2068;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG6_OFFSET = 14'h 206c;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDR7_OFFSET = 14'h 2070;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_ADDRH7_OFFSET = 14'h 2074;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_CFG7_OFFSET = 14'h 2078;
+  parameter logic [BlockAw-1:0] IO_PMP_ENTRY_USER_CFG7_OFFSET = 14'h 207c;
 
   // Register index
   typedef enum int {
-    IO_PMP_PMP_ADDR_0,
-    IO_PMP_PMP_ADDR_1,
-    IO_PMP_PMP_ADDR_2,
-    IO_PMP_PMP_ADDR_3,
-    IO_PMP_PMP_ADDR_4,
-    IO_PMP_PMP_ADDR_5,
-    IO_PMP_PMP_ADDR_6,
-    IO_PMP_PMP_ADDR_7,
-    IO_PMP_PMP_ADDR_8,
-    IO_PMP_PMP_ADDR_9,
-    IO_PMP_PMP_ADDR_10,
-    IO_PMP_PMP_ADDR_11,
-    IO_PMP_PMP_ADDR_12,
-    IO_PMP_PMP_ADDR_13,
-    IO_PMP_PMP_ADDR_14,
-    IO_PMP_PMP_ADDR_15,
-    IO_PMP_PMP_CFG_0,
-    IO_PMP_PMP_CFG_1
+    IO_PMP_VERSION,
+    IO_PMP_IMP,
+    IO_PMP_HWCFG0,
+    IO_PMP_HWCFG1,
+    IO_PMP_ENTRY_OFFSET,
+    IO_PMP_ERRREACT,
+    IO_PMP_MDSTALL,
+    IO_PMP_MDSTALLH,
+    IO_PMP_SIDSCP,
+    IO_PMP_MDLCK,
+    IO_PMP_MDLCKH,
+    IO_PMP_MDCFGLCK,
+    IO_PMP_ENTRYLCK,
+    IO_PMP_ERR_REQADDR,
+    IO_PMP_ERR_REQADDRH,
+    IO_PMP_ERR_REQSID,
+    IO_PMP_ERR_REQINFO,
+    IO_PMP_MDCFG,
+    IO_PMP_SRCMD_EN0,
+    IO_PMP_SRCMD_ENH0,
+    IO_PMP_SRCMD_R0,
+    IO_PMP_SRCMD_RH0,
+    IO_PMP_SRCMD_W0,
+    IO_PMP_SRCMD_WH0,
+    IO_PMP_SRCMD_EN1,
+    IO_PMP_SRCMD_ENH1,
+    IO_PMP_SRCMD_R1,
+    IO_PMP_SRCMD_RH1,
+    IO_PMP_SRCMD_W1,
+    IO_PMP_SRCMD_WH1,
+    IO_PMP_SRCMD_EN2,
+    IO_PMP_SRCMD_ENH2,
+    IO_PMP_SRCMD_R2,
+    IO_PMP_SRCMD_RH2,
+    IO_PMP_SRCMD_W2,
+    IO_PMP_SRCMD_WH2,
+    IO_PMP_SRCMD_EN3,
+    IO_PMP_SRCMD_ENH3,
+    IO_PMP_SRCMD_R3,
+    IO_PMP_SRCMD_RH3,
+    IO_PMP_SRCMD_W3,
+    IO_PMP_SRCMD_WH3,
+    IO_PMP_ENTRY_ADDR0,
+    IO_PMP_ENTRY_ADDRH0,
+    IO_PMP_ENTRY_CFG0,
+    IO_PMP_ENTRY_USER_CFG0,
+    IO_PMP_ENTRY_ADDR1,
+    IO_PMP_ENTRY_ADDRH1,
+    IO_PMP_ENTRY_CFG1,
+    IO_PMP_ENTRY_USER_CFG1,
+    IO_PMP_ENTRY_ADDR2,
+    IO_PMP_ENTRY_ADDRH2,
+    IO_PMP_ENTRY_CFG2,
+    IO_PMP_ENTRY_USER_CFG2,
+    IO_PMP_ENTRY_ADDR3,
+    IO_PMP_ENTRY_ADDRH3,
+    IO_PMP_ENTRY_CFG3,
+    IO_PMP_ENTRY_USER_CFG3,
+    IO_PMP_ENTRY_ADDR4,
+    IO_PMP_ENTRY_ADDRH4,
+    IO_PMP_ENTRY_CFG4,
+    IO_PMP_ENTRY_USER_CFG4,
+    IO_PMP_ENTRY_ADDR5,
+    IO_PMP_ENTRY_ADDRH5,
+    IO_PMP_ENTRY_CFG5,
+    IO_PMP_ENTRY_USER_CFG5,
+    IO_PMP_ENTRY_ADDR6,
+    IO_PMP_ENTRY_ADDRH6,
+    IO_PMP_ENTRY_CFG6,
+    IO_PMP_ENTRY_USER_CFG6,
+    IO_PMP_ENTRY_ADDR7,
+    IO_PMP_ENTRY_ADDRH7,
+    IO_PMP_ENTRY_CFG7,
+    IO_PMP_ENTRY_USER_CFG7
   } io_pmp_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] IO_PMP_PERMIT[18] = '{
-      4'b1111,  // index[ 0] IO_PMP_PMP_ADDR_0
-      4'b1111,  // index[ 1] IO_PMP_PMP_ADDR_1
-      4'b1111,  // index[ 2] IO_PMP_PMP_ADDR_2
-      4'b1111,  // index[ 3] IO_PMP_PMP_ADDR_3
-      4'b1111,  // index[ 4] IO_PMP_PMP_ADDR_4
-      4'b1111,  // index[ 5] IO_PMP_PMP_ADDR_5
-      4'b1111,  // index[ 6] IO_PMP_PMP_ADDR_6
-      4'b1111,  // index[ 7] IO_PMP_PMP_ADDR_7
-      4'b1111,  // index[ 8] IO_PMP_PMP_ADDR_8
-      4'b1111,  // index[ 9] IO_PMP_PMP_ADDR_9
-      4'b1111,  // index[10] IO_PMP_PMP_ADDR_10
-      4'b1111,  // index[11] IO_PMP_PMP_ADDR_11
-      4'b1111,  // index[12] IO_PMP_PMP_ADDR_12
-      4'b1111,  // index[13] IO_PMP_PMP_ADDR_13
-      4'b1111,  // index[14] IO_PMP_PMP_ADDR_14
-      4'b1111,  // index[15] IO_PMP_PMP_ADDR_15
-      4'b1111,  // index[16] IO_PMP_PMP_CFG_0
-      4'b1111  // index[17] IO_PMP_PMP_CFG_1
+  parameter logic [3:0] IO_PMP_PERMIT [74] = '{
+    4'b 1111, // index[ 0] IO_PMP_VERSION
+    4'b 1111, // index[ 1] IO_PMP_IMP
+    4'b 1111, // index[ 2] IO_PMP_HWCFG0
+    4'b 1111, // index[ 3] IO_PMP_HWCFG1
+    4'b 1111, // index[ 4] IO_PMP_ENTRY_OFFSET
+    4'b 1111, // index[ 5] IO_PMP_ERRREACT
+    4'b 1111, // index[ 6] IO_PMP_MDSTALL
+    4'b 1111, // index[ 7] IO_PMP_MDSTALLH
+    4'b 1111, // index[ 8] IO_PMP_SIDSCP
+    4'b 1111, // index[ 9] IO_PMP_MDLCK
+    4'b 1111, // index[10] IO_PMP_MDLCKH
+    4'b 0001, // index[11] IO_PMP_MDCFGLCK
+    4'b 0011, // index[12] IO_PMP_ENTRYLCK
+    4'b 1111, // index[13] IO_PMP_ERR_REQADDR
+    4'b 1111, // index[14] IO_PMP_ERR_REQADDRH
+    4'b 0011, // index[15] IO_PMP_ERR_REQSID
+    4'b 0011, // index[16] IO_PMP_ERR_REQINFO
+    4'b 1111, // index[17] IO_PMP_MDCFG
+    4'b 1111, // index[18] IO_PMP_SRCMD_EN0
+    4'b 1111, // index[19] IO_PMP_SRCMD_ENH0
+    4'b 1111, // index[20] IO_PMP_SRCMD_R0
+    4'b 1111, // index[21] IO_PMP_SRCMD_RH0
+    4'b 1111, // index[22] IO_PMP_SRCMD_W0
+    4'b 1111, // index[23] IO_PMP_SRCMD_WH0
+    4'b 1111, // index[24] IO_PMP_SRCMD_EN1
+    4'b 1111, // index[25] IO_PMP_SRCMD_ENH1
+    4'b 1111, // index[26] IO_PMP_SRCMD_R1
+    4'b 1111, // index[27] IO_PMP_SRCMD_RH1
+    4'b 1111, // index[28] IO_PMP_SRCMD_W1
+    4'b 1111, // index[29] IO_PMP_SRCMD_WH1
+    4'b 1111, // index[30] IO_PMP_SRCMD_EN2
+    4'b 1111, // index[31] IO_PMP_SRCMD_ENH2
+    4'b 1111, // index[32] IO_PMP_SRCMD_R2
+    4'b 1111, // index[33] IO_PMP_SRCMD_RH2
+    4'b 1111, // index[34] IO_PMP_SRCMD_W2
+    4'b 1111, // index[35] IO_PMP_SRCMD_WH2
+    4'b 1111, // index[36] IO_PMP_SRCMD_EN3
+    4'b 1111, // index[37] IO_PMP_SRCMD_ENH3
+    4'b 1111, // index[38] IO_PMP_SRCMD_R3
+    4'b 1111, // index[39] IO_PMP_SRCMD_RH3
+    4'b 1111, // index[40] IO_PMP_SRCMD_W3
+    4'b 1111, // index[41] IO_PMP_SRCMD_WH3
+    4'b 1111, // index[42] IO_PMP_ENTRY_ADDR0
+    4'b 1111, // index[43] IO_PMP_ENTRY_ADDRH0
+    4'b 0001, // index[44] IO_PMP_ENTRY_CFG0
+    4'b 1111, // index[45] IO_PMP_ENTRY_USER_CFG0
+    4'b 1111, // index[46] IO_PMP_ENTRY_ADDR1
+    4'b 1111, // index[47] IO_PMP_ENTRY_ADDRH1
+    4'b 0001, // index[48] IO_PMP_ENTRY_CFG1
+    4'b 1111, // index[49] IO_PMP_ENTRY_USER_CFG1
+    4'b 1111, // index[50] IO_PMP_ENTRY_ADDR2
+    4'b 1111, // index[51] IO_PMP_ENTRY_ADDRH2
+    4'b 0001, // index[52] IO_PMP_ENTRY_CFG2
+    4'b 1111, // index[53] IO_PMP_ENTRY_USER_CFG2
+    4'b 1111, // index[54] IO_PMP_ENTRY_ADDR3
+    4'b 1111, // index[55] IO_PMP_ENTRY_ADDRH3
+    4'b 0001, // index[56] IO_PMP_ENTRY_CFG3
+    4'b 1111, // index[57] IO_PMP_ENTRY_USER_CFG3
+    4'b 1111, // index[58] IO_PMP_ENTRY_ADDR4
+    4'b 1111, // index[59] IO_PMP_ENTRY_ADDRH4
+    4'b 0001, // index[60] IO_PMP_ENTRY_CFG4
+    4'b 1111, // index[61] IO_PMP_ENTRY_USER_CFG4
+    4'b 1111, // index[62] IO_PMP_ENTRY_ADDR5
+    4'b 1111, // index[63] IO_PMP_ENTRY_ADDRH5
+    4'b 0001, // index[64] IO_PMP_ENTRY_CFG5
+    4'b 1111, // index[65] IO_PMP_ENTRY_USER_CFG5
+    4'b 1111, // index[66] IO_PMP_ENTRY_ADDR6
+    4'b 1111, // index[67] IO_PMP_ENTRY_ADDRH6
+    4'b 0001, // index[68] IO_PMP_ENTRY_CFG6
+    4'b 1111, // index[69] IO_PMP_ENTRY_USER_CFG6
+    4'b 1111, // index[70] IO_PMP_ENTRY_ADDR7
+    4'b 1111, // index[71] IO_PMP_ENTRY_ADDRH7
+    4'b 0001, // index[72] IO_PMP_ENTRY_CFG7
+    4'b 1111  // index[73] IO_PMP_ENTRY_USER_CFG7
   };
 
 endpackage

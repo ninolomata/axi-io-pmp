@@ -1,348 +1,1216 @@
-<table class="regdef" id="Reg_pmp_addr_0">
+<table class="regdef" id="Reg_version">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_0 @ 0x0</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.VERSION @ 0x0</div>
+   <div><p>Indicates the IP version and other vendor details.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_0...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=8>specver</td>
+<td class="fname" colspan=8>vendor...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_0...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_0...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_0</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...vendor</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_0</td><td class="regde"><p>Single PMP address</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">23:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">vendor</td><td class="regde"><p>The vendor ID.</p></td><tr><td class="regbits">31:24</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">specver</td><td class="regde"><p>The specification version.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_1">
+<table class="regdef" id="Reg_imp">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_1 @ 0x8</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.IMP @ 0x4</div>
+   <div><p>the implementation ID</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_1...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>impid...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_1...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_1...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_1</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...impid</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_1</td><td class="regde"><p>For PMP1</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">impid</td><td class="regde"><p>The implementation ID.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_2">
+<table class="regdef" id="Reg_hwcfg0">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_2 @ 0x10</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.HWCFG0 @ 0x8</div>
+   <div><p>Indicates the configurations of current IOPMP instance</p></div>
+   <div>Reset default = 0x80202, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_2...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=1 style="font-size:50.0%">enable</td>
+<td class="fname" colspan=15>entry_num</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_2...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_2...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_2</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=9>sid_num</td>
+<td class="fname" colspan=7>md_num</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_2</td><td class="regde"><p>For PMP2</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">6:0</td><td class="regperm">ro</td><td class="regrv">0x2</td><td class="regfn">md_num</td><td class="regde"><p>Indicate the supported number of MD in the instance.</p></td><tr><td class="regbits">15:7</td><td class="regperm">ro</td><td class="regrv">0x4</td><td class="regfn">sid_num</td><td class="regde"><p>Indicate the supported number of SID in the instance.</p></td><tr><td class="regbits">30:16</td><td class="regperm">ro</td><td class="regrv">0x8</td><td class="regfn">entry_num</td><td class="regde"><p>Indicate the supported number of entries in the instance.</p></td><tr><td class="regbits">31</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">enable</td><td class="regde"><p>Indicate if the IOPMP checks transactions. If it is implemented,
+it should be initial to 0 and sticky to 1. If it is not implemented,
+it should be wired to 1.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_3">
+<table class="regdef" id="Reg_hwcfg1">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_3 @ 0x18</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.HWCFG1 @ 0xc</div>
+   <div><p>Indicates the configurations of current IOPMP instance</p></div>
+   <div>Reset default = 0x3, mask 0xffff00ff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_3...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>prio_entry</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_3...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_3...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_3</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=8>&nbsp;</td>
+<td class="fname" colspan=4>model</td>
+<td class="fname" colspan=1 style="font-size:27.272727272727273%">prog_prient</td>
+<td class="fname" colspan=1 style="font-size:27.272727272727273%">user_cfg_en</td>
+<td class="fname" colspan=1 style="font-size:50.0%">sps_en</td>
+<td class="fname" colspan=1 style="font-size:50.0%">tor_en</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_3</td><td class="regde"><p>For PMP3</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x1</td><td class="regfn">tor_en</td><td class="regde"><p>Indicate if TOR is supported.</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x1</td><td class="regfn">sps_en</td><td class="regde"><p>Indicate the secondary permission settings is supported.</p></td><tr><td class="regbits">2</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">user_cfg_en</td><td class="regde"><p>Indicate the if user customized attributes is supported.</p></td><tr><td class="regbits">3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">prog_prient</td><td class="regde"><p>A sticiky bit to indicate if prio_entry is programmable.</p></td><tr><td class="regbits">7:4</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">model</td><td class="regde"><p>Indicate the iopmp instance model</p><table><tr><td>0</td><td>Full</td><td><p>The number of MDCFG registers is equal to HWCFG.md_num,
+all MDCFG registers are readable and writable</p></td></tr>
+<tr><td>1</td><td>Rapid-k</td><td><p>A single MDCFG register to indicate the k value, read only</p></td></tr>
+<tr><td>2</td><td>Dynamic-k</td><td><p>A single MDCFG register to indicate the k value, readable and writable.</p></td></tr>
+<tr><td>3</td><td>Isolation</td><td><p>the number of MDCFG registers is equal to HWCFG.md_num,
+all MDCFG registers are readable and writable.</p></td></tr>
+<tr><td>4</td><td>Compact-k</td><td><p>a single MDCFG register to indicate the k value, read only.</p></td></tr>
+</table><p>Other values are reserved.</p></td><tr><td class="regbits">15:8</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:16</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">prio_entry</td><td class="regde"><p>Indicate the number of entries matched with priority.
+These rules should be placed in the lowest order.
+Within these rules, the lower order has a higher priority.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_4">
+<table class="regdef" id="Reg_entry_offset">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_4 @ 0x20</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ENTRY_OFFSET @ 0x10</div>
+   <div><p>Indicates the internal address offsets of each table.</p></div>
+   <div>Reset default = 0x2000, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_4...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>OFFSET...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_4...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_4...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_4</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...OFFSET</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_4</td><td class="regde"><p>For PMP4</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x2000</td><td class="regfn">OFFSET</td><td class="regde"><p>Indicate the offset address of the IOPMP array from the base of an IOPMP instance,
+a.k.a. the address of HWCFG.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_5">
+<table class="regdef" id="Reg_errreact">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_5 @ 0x28</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ERRREACT @ 0x14</div>
+   <div><p>Indicates errors events in the IOPMP IP.</p></div>
+   <div>Reset default = 0x0, mask 0xf000fff7</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_5...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=3>rpe</td>
+<td class="fname" colspan=1>pee</td>
+<td class="unused" colspan=12>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_5...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_5...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_5</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=4>rsv</td>
+<td class="fname" colspan=3>rwe</td>
+<td class="fname" colspan=1>iwe</td>
+<td class="fname" colspan=3>rre</td>
+<td class="fname" colspan=1>ire</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>ip</td>
+<td class="fname" colspan=1>ie</td>
+<td class="fname" colspan=1>l</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_5</td><td class="regde"><p>For PMP5</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>Lock fields to ERRREACT register except ip.</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">ie</td><td class="regde"><p>Enable the interrupt of the IOPMP.</p></td><tr><td class="regbits">2</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">ip</td><td class="regde"><p>Indicate if an interrupt is pending on read.
+for 1, the illegal capture recorder (ERR_XXXX)
+won’t be updated even on subsequent violations.
+Write 1 clears the bit and the illegal recorder reactivates.
+Write 0 causes no effect on the bit.</p></td><tr><td class="regbits">3</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">ire</td><td class="regde"><p>To triggle the interrupt on illegal read if ie = 1</p></td><tr><td class="regbits">7:5</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">rre</td><td class="regde"><p>Response on read illegal access: 
+- 0x0: respond a bus error
+- 0x1: respond a decode error
+- 0x2: respond a success with data, all of which are zeros.
+- 0x3: respond a success with data, all of which are ones.
+- 0x4~0x7: user defined</p></td><tr><td class="regbits">8</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">iwe</td><td class="regde"><p>To triggle the interrupt on illegal write if ie = 1</p></td><tr><td class="regbits">11:9</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">rwe</td><td class="regde"><p>Response on write illegal access: 
+- 0x0: respond a bus error
+- 0x1: respond a decode error
+- 0x2: respond a success
+- 0x3~0x7: user defined</p></td><tr><td class="regbits">15:12</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">rsv</td><td class="regde"><p>Must be zero, reserved for future</p></td><tr><td class="regbits">27:16</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">28</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">pee</td><td class="regde"><p>Enable to differentiate between a prefetch access and an illegal access</p></td><tr><td class="regbits">31:29</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">rpe</td><td class="regde"><p>Response on prefetch illegal access: 
+- 0x0: respond a bus error
+- 0x1: respond a decode error
+- 0x2~0x7: user defined</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_6">
+<table class="regdef" id="Reg_mdstall">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_6 @ 0x30</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.MDSTALL @ 0x18</div>
+   <div><p>The MDSTALL(H) is implemented to support atomicity issue while programming the IOPMP,
+as the IOPMP rule may not be updated in a single transaction.</p></div>
+   <div>Reset default = 0x0, mask 0x7fffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_6...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=15>md...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_6...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_6...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_6</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...md</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_6</td><td class="regde"><p>For PMP6</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">30:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>| Field      | Bit  | R/W |                   Description                      | 
+| Exempt     | 0:0  | W   | Stall transactions with exempt selected MDs,       |
+|            |      |     | or Stall selected MDs.                             |
+| is_stalled | 0:0  | R   | Indicate if the requested stalls have occured      |
+| md         | 30:0 | W   | Setting MD[i]=1 selects MD i.                      |
+| md         | 30:0 | R   | MD[i]=1 means MD i selected.                       |</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_7">
+<table class="regdef" id="Reg_mdstallh">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_7 @ 0x38</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.MDSTALLH @ 0x1c</div>
+   <div><p>The MDSTALL(H) is implemented to support atomicity issue while programming the IOPMP,
+as the IOPMP rule may not be updated in a single transaction.</p></div>
+   <div>Reset default = 0x0, mask 0x7fffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_7...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=15>md...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_7...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_7...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_7</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...md</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_7</td><td class="regde"><p>For PMP7</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">30:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>| Field      | Bit  | R/W |                   Description                      | 
+| md         | 30:0 | W   | Setting MD[i]=1 selects MD i+31.                   |
+| md         | 30:0 | R   | MD[i]=1 means MD i+31 selected.                    |</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_8">
+<table class="regdef" id="Reg_sidscp">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_8 @ 0x40</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.SIDSCP @ 0x20</div>
+   <div><p>The SIDSCP is implemented to support atomicity issue while programming the IOPMP,
+as the IOPMP rule may not be updated in a single transaction.</p></div>
+   <div>Reset default = 0x0, mask 0xc000ffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_8...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=2 style="font-size:85.71428571428571%">op_stat</td>
+<td class="unused" colspan=14>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_8...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_8...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_8</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>sid</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_8</td><td class="regde"><p>For PMP8</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">15:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">sid</td><td class="regde"><p>SID to select</p></td><tr><td class="regbits">29:16</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:30</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">op_stat</td><td class="regde"><p>| Field      | Bit   | R/W |                   Description                      | 
+| op         | 31:30 | W   | 0: query, 1: stall transactions associated with    | 
+|            |       |     | selected SID, 2: don’t stall transactions          |
+|            |       |     | associated with selected SID, and 3: reserved      |
+| stat       | 31:30 | R   | 0: SIDSCP not implemented, 1: transactions         |
+|            |       |     | associated with selected SID are stalled, 2:       |
+|            |       |     | transactions associated with selected SID not are  |
+|            |       |     | stalled, and 3: unimplemented or unselectable SID  |</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_9">
+<table class="regdef" id="Reg_mdlck">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_9 @ 0x48</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.MDLCK @ 0x24</div>
+   <div><p>Bitmap field register low bits to indicate which MDs are locked.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_9...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_9...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_9...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_9</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+<td class="fname" colspan=1>l</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_9</td><td class="regde"><p>For PMP9</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>Lock bit to MDLCK and MDLCKH register.</p></td><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] indicates if MD j in SRCiMD is locked for all i.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_10">
+<table class="regdef" id="Reg_mdlckh">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_10 @ 0x50</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.MDLCKH @ 0x28</div>
+   <div><p>Bitmap field register high bits to indicate which MDs are locked.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_10...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_10...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_10...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_10</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...md</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_10</td><td class="regde"><p>For PMP10</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] indicates if MD j in SRCiMD is locked for all i.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_11">
+<table class="regdef" id="Reg_mdcfglck">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_11 @ 0x58</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.MDCFGLCK @ 0x2c</div>
+   <div><p>Lock Register for MDCFG table.</p></div>
+   <div>Reset default = 0x0, mask 0xff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_11...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_11...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_11...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_11</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=8>&nbsp;</td>
+<td class="fname" colspan=7>f</td>
+<td class="fname" colspan=1>l</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_11</td><td class="regde"><p>For PMP11</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>Lock bit to MDLCK and MDLCKH register</p></td><tr><td class="regbits">7:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">f</td><td class="regde"><p>Indicate the number of locked MDCFG entries,
+MDCFG entry[f-1:0] is locked. SW shall write
+a value that is no smaller than current number.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_12">
+<table class="regdef" id="Reg_entrylck">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_12 @ 0x60</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ENTRYLCK @ 0x30</div>
+   <div><p>Lock register for entry array.</p></div>
+   <div>Reset default = 0x0, mask 0xffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_12...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_12...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_12...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_12</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>f</td>
+<td class="fname" colspan=1>l</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_12</td><td class="regde"><p>For PMP12</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>Lock bit to ENTRYLCK register.</p></td><tr><td class="regbits">15:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">f</td><td class="regde"><p>Indicate the number of locked IOPMP entries
+IOPMP_ENTRY[f-1:0] is locked.
+SW shall write a value that is no smaller than current number.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_13">
+<table class="regdef" id="Reg_err_reqaddr">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_13 @ 0x68</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ERR_REQADDR @ 0x60</div>
+   <div><p>Indicate the errored request address low bits.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_13...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_13...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_13...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_13</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_13</td><td class="regde"><p>For PMP13</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>Indicate the errored address low bits.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_14">
+<table class="regdef" id="Reg_err_reqaddrh">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_14 @ 0x70</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ERR_REQADDRH @ 0x64</div>
+   <div><p>Indicate the errored request address high bits.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_14...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_14...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_14...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_14</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_14</td><td class="regde"><p>For PMP14</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>Indicate the errored address high bits.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_addr_15">
+<table class="regdef" id="Reg_err_reqsid">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_ADDR_15 @ 0x78</div>
-   <div><p>PMP address</p></div>
-   <div>Reset default = 0x0, mask 0x3fffffffffffff</div>
+   <div>io_pmp.ERR_REQSID @ 0x68</div>
+   <div><p>Indicate the errored SID.</p></div>
+   <div>Reset default = 0x0, mask 0xffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="unused" colspan=10>&nbsp;</td>
-<td class="fname" colspan=6>PMP_ADDR_15...</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_15...</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_15...</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...PMP_ADDR_15</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>sid</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">53:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_ADDR_15</td><td class="regde"><p>For PMP15</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">15:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">sid</td><td class="regde"><p>Indicate the errored SID.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_cfg_0">
+<table class="regdef" id="Reg_err_reqinfo">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_CFG_0 @ 0x80</div>
-   <div><p>PMP configuration</p></div>
-   <div>Reset default = 0x0, mask 0xffffffffffffffff</div>
+   <div>io_pmp.ERR_REQINFO @ 0x6c</div>
+   <div><p>Captures more detailed error infomation.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffc3</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="fname" colspan=8>PMP_CFG_7</td>
-<td class="fname" colspan=8>PMP_CFG_6</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=8>PMP_CFG_5</td>
-<td class="fname" colspan=8>PMP_CFG_4</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=8>PMP_CFG_3</td>
-<td class="fname" colspan=8>PMP_CFG_2</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=8>PMP_CFG_1</td>
-<td class="fname" colspan=8>PMP_CFG_0</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=5>&nbsp;</td>
+<td class="fname" colspan=3>type_err</td>
+<td class="fname" colspan=26>eid</td>
+<td class="unused" colspan=4>&nbsp;</td>
+<td class="fname" colspan=1 style="font-size:42.857142857142854%">par_hit</td>
+<td class="fname" colspan=1 style="font-size:50.0%">no_hit</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">7:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_0</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">15:8</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_1</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">23:16</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_2</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">31:24</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_3</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">39:32</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_4</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">47:40</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_5</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">55:48</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_6</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td><tr><td class="regbits">63:56</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_7</td><td class="regde"><p>Single PMP config entry: { [7]locked, [6:5]reserved, [4:3]addr_mode, [2:0]access_type }</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">no_hit</td><td class="regde"><p>Indicate the request hit no entry.</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">par_hit</td><td class="regde"><p>Indicate the request failed due to partial hit.</p></td><tr><td class="regbits">5:2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:6</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">eid</td><td class="regde"><p>Indicated the errored entry index.</p></td><tr><td class="regbits">10:8</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">type_err</td><td class="regde"><p>Indicated if it’s a read, write or user field violation.
+- 0x0 = read error
+- 0x1 = write error
+- 0x3 = user_attr error.</p></td></table>
 <br>
-<table class="regdef" id="Reg_pmp_cfg_1">
+<table class="regdef" id="Reg_mdcfg">
  <tr>
   <th class="regdef" colspan=5>
-   <div>io_pmp.PMP_CFG_1 @ 0x88</div>
-   <div><p>PMP configuration</p></div>
-   <div>Reset default = 0x0, mask 0xffffffffffffffff</div>
+   <div>io_pmp.MDCFG @ 0x800</div>
+   <div><p>MDCFG table is a lookup to specify the number of IOPMP entries that is associated with each MD.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
   </th>
  </tr>
-<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">63</td><td class="bitnum">62</td><td class="bitnum">61</td><td class="bitnum">60</td><td class="bitnum">59</td><td class="bitnum">58</td><td class="bitnum">57</td><td class="bitnum">56</td><td class="bitnum">55</td><td class="bitnum">54</td><td class="bitnum">53</td><td class="bitnum">52</td><td class="bitnum">51</td><td class="bitnum">50</td><td class="bitnum">49</td><td class="bitnum">48</td></tr><tr><td class="fname" colspan=8>PMP_CFG_15</td>
-<td class="fname" colspan=8>PMP_CFG_14</td>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>t_1</td>
 </tr>
-<tr><td class="bitnum">47</td><td class="bitnum">46</td><td class="bitnum">45</td><td class="bitnum">44</td><td class="bitnum">43</td><td class="bitnum">42</td><td class="bitnum">41</td><td class="bitnum">40</td><td class="bitnum">39</td><td class="bitnum">38</td><td class="bitnum">37</td><td class="bitnum">36</td><td class="bitnum">35</td><td class="bitnum">34</td><td class="bitnum">33</td><td class="bitnum">32</td></tr><tr><td class="fname" colspan=8>PMP_CFG_13</td>
-<td class="fname" colspan=8>PMP_CFG_12</td>
-</tr>
-<tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=8>PMP_CFG_11</td>
-<td class="fname" colspan=8>PMP_CFG_10</td>
-</tr>
-<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=8>PMP_CFG_9</td>
-<td class="fname" colspan=8>PMP_CFG_8</td>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>t_0</td>
 </tr></table></td></tr>
-<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">7:0</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_8</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">15:8</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_9</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">23:16</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_10</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">31:24</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_11</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">39:32</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_12</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">47:40</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_13</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">55:48</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_14</td><td class="regde"><p>For PMP1</p></td><tr><td class="regbits">63:56</td><td class="regperm">rw</td><td class="regrv">0x0</td><td class="regfn">PMP_CFG_15</td><td class="regde"><p>For PMP1</p></td></table>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">15:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">t_0</td><td class="regde"><p>- Indicate the top range of memory domain m. An IOPMP entry with index j belongs to MD m
+- If MDCFG(m-1).t ≤ j < MDCFG(m).t, where m>0. The MD0 owns the IOPMP entries with index j<MD0CFG.t.
+- If MDCFG(m-1).t >= MDCFG(m).t, then MD m is empty.
+- For rapid-k, dynamic-k and compact-k models, t indicates the number of IOPMP entries belongs to each MD.</p></td><tr><td class="regbits">31:16</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">t_1</td><td class="regde"><p>- Indicate the top range of memory domain m. An IOPMP entry with index j belongs to MD m
+- If MDCFG(m-1).t ≤ j < MDCFG(m).t, where m>0. The MD0 owns the IOPMP entries with index j<MD0CFG.t.
+- If MDCFG(m-1).t >= MDCFG(m).t, then MD m is empty.
+- For rapid-k, dynamic-k and compact-k models, t indicates the number of IOPMP entries belongs to each MD.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_en0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_EN0 @ 0x1000</div>
+   <div><p>Bitmapped MD enable register low bits for source 0.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+<td class="fname" colspan=1>l</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>A sticky lock bit. When set, locks SRCMD_EN0, SRCMD_R0 and SRCMD_W0</p></td><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 0.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_enh0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_ENH0 @ 0x1004</div>
+   <div><p>Bitmapped MD enable register high bits for source 0.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 0.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_r0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_R0 @ 0x1008</div>
+   <div><p>(Optional) Bitmapped MD read enable register low bits for source 0,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 0 has read permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_rh0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_RH0 @ 0x100c</div>
+   <div><p>(Optional)Bitmapped MD read enable register high bits for source 0,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_w0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_W0 @ 0x1010</div>
+   <div><p>(Optional)Bitmapped MD write enable register low bits for source 0,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 0 has write permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_wh0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_WH0 @ 0x1014</div>
+   <div><p>(Optional)Bitmapped MD write eanble register high bits for source 0,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID 0 has write permission to MD([j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_en1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_EN1 @ 0x1018</div>
+   <div><p>Bitmapped MD enable register low bits for source 1.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+<td class="fname" colspan=1>l</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>A sticky lock bit. When set, locks SRCMD_EN1, SRCMD_R1 and SRCMD_W1</p></td><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 1.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_enh1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_ENH1 @ 0x101c</div>
+   <div><p>Bitmapped MD enable register high bits for source 1.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 1.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_r1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_R1 @ 0x1020</div>
+   <div><p>(Optional) Bitmapped MD read enable register low bits for source 1,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 1 has read permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_rh1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_RH1 @ 0x1024</div>
+   <div><p>(Optional)Bitmapped MD read enable register high bits for source 1,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_w1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_W1 @ 0x1028</div>
+   <div><p>(Optional)Bitmapped MD write enable register low bits for source 1,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 1 has write permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_wh1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_WH1 @ 0x102c</div>
+   <div><p>(Optional)Bitmapped MD write eanble register high bits for source 1,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID 1 has write permission to MD([j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_en2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_EN2 @ 0x1030</div>
+   <div><p>Bitmapped MD enable register low bits for source 2.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+<td class="fname" colspan=1>l</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>A sticky lock bit. When set, locks SRCMD_EN2, SRCMD_R2 and SRCMD_W2</p></td><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 2.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_enh2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_ENH2 @ 0x1034</div>
+   <div><p>Bitmapped MD enable register high bits for source 2.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 2.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_r2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_R2 @ 0x1038</div>
+   <div><p>(Optional) Bitmapped MD read enable register low bits for source 2,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 2 has read permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_rh2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_RH2 @ 0x103c</div>
+   <div><p>(Optional)Bitmapped MD read enable register high bits for source 2,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_w2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_W2 @ 0x1040</div>
+   <div><p>(Optional)Bitmapped MD write enable register low bits for source 2,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 2 has write permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_wh2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_WH2 @ 0x1044</div>
+   <div><p>(Optional)Bitmapped MD write eanble register high bits for source 2,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID 2 has write permission to MD([j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_en3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_EN3 @ 0x1048</div>
+   <div><p>Bitmapped MD enable register low bits for source 3.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+<td class="fname" colspan=1>l</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">l</td><td class="regde"><p>A sticky lock bit. When set, locks SRCMD_EN3, SRCMD_R3 and SRCMD_W3</p></td><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 3.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_enh3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_ENH3 @ 0x104c</div>
+   <div><p>Bitmapped MD enable register high bits for source 3.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>md[j] = 1 indicates md j is associated with SID 3.</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_r3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_R3 @ 0x1050</div>
+   <div><p>(Optional) Bitmapped MD read enable register low bits for source 3,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 3 has read permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_rh3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_RH3 @ 0x1054</div>
+   <div><p>(Optional)Bitmapped MD read enable register high bits for source 3,
+it indicate source s read permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID s has read permission to MD([ j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_w3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_W3 @ 0x1058</div>
+   <div><p>(Optional)Bitmapped MD write enable register low bits for source 3,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xfffffffe</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>md...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=15>...md</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">31:1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">md</td><td class="regde"><p>md[j] = 1 indicates SID 3 has write permission to the corresponding MD[j].</p></td></table>
+<br>
+<table class="regdef" id="Reg_srcmd_wh3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.SRCMD_WH3 @ 0x105c</div>
+   <div><p>(Optional)Bitmapped MD write eanble register high bits for source 3,
+it indicate source s write permission on MDs.</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>mdh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...mdh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">mdh</td><td class="regde"><p>mdh[j] = 1 indicates SID 3 has write permission to MD([j]+31).</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR0 @ 0x2000</div>
+   <div><p>IOPMP entrie number 0 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 0.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH0 @ 0x2004</div>
+   <div><p>IOPMP entrie number 0 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 0.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG0 @ 0x2008</div>
+   <div><p>IOPMP entrie number 0 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 0</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 0</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 0</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 0: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg0">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG0 @ 0x200c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 0</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 0</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR1 @ 0x2010</div>
+   <div><p>IOPMP entrie number 1 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 1.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH1 @ 0x2014</div>
+   <div><p>IOPMP entrie number 1 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 1.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG1 @ 0x2018</div>
+   <div><p>IOPMP entrie number 1 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 1</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 1</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 1</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 1: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg1">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG1 @ 0x201c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 1</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 1</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR2 @ 0x2020</div>
+   <div><p>IOPMP entrie number 2 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 2.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH2 @ 0x2024</div>
+   <div><p>IOPMP entrie number 2 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 2.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG2 @ 0x2028</div>
+   <div><p>IOPMP entrie number 2 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 2</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 2</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 2</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 2: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg2">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG2 @ 0x202c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 2</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 2</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR3 @ 0x2030</div>
+   <div><p>IOPMP entrie number 3 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 3.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH3 @ 0x2034</div>
+   <div><p>IOPMP entrie number 3 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 3.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG3 @ 0x2038</div>
+   <div><p>IOPMP entrie number 3 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 3</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 3</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 3</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 3: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg3">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG3 @ 0x203c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 3</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 3</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr4">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR4 @ 0x2040</div>
+   <div><p>IOPMP entrie number 4 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 4.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh4">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH4 @ 0x2044</div>
+   <div><p>IOPMP entrie number 4 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 4.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg4">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG4 @ 0x2048</div>
+   <div><p>IOPMP entrie number 4 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 4</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 4</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 4</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 4: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg4">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG4 @ 0x204c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 4</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 4</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr5">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR5 @ 0x2050</div>
+   <div><p>IOPMP entrie number 5 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 5.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh5">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH5 @ 0x2054</div>
+   <div><p>IOPMP entrie number 5 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 5.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg5">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG5 @ 0x2058</div>
+   <div><p>IOPMP entrie number 5 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 5</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 5</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 5</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 5: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg5">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG5 @ 0x205c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 5</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 5</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr6">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR6 @ 0x2060</div>
+   <div><p>IOPMP entrie number 6 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 6.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh6">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH6 @ 0x2064</div>
+   <div><p>IOPMP entrie number 6 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 6.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg6">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG6 @ 0x2068</div>
+   <div><p>IOPMP entrie number 6 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 6</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 6</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 6</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 6: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg6">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG6 @ 0x206c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 6</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 6</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addr7">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDR7 @ 0x2070</div>
+   <div><p>IOPMP entrie number 7 low bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addr...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addr</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addr</td><td class="regde"><p>The low bits physical address of protected memory region entrie 7.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_addrh7">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_ADDRH7 @ 0x2074</div>
+   <div><p>IOPMP entrie number 7 high bits of physical address of protected memory region</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>addrh...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...addrh</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">addrh</td><td class="regde"><p>The high bits physical address of protected memory region entrie 7.</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_cfg7">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_CFG7 @ 0x2078</div>
+   <div><p>IOPMP entrie number 7 configuration register.</p></div>
+   <div>Reset default = 0x0, mask 0x1b</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="unused" colspan=16>&nbsp;</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="unused" colspan=11>&nbsp;</td>
+<td class="fname" colspan=2>a</td>
+<td class="unused" colspan=1>&nbsp;</td>
+<td class="fname" colspan=1>w</td>
+<td class="fname" colspan=1>x</td>
+<td class="fname" colspan=1>r</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">r</td><td class="regde"><p>The read permission to protected memory region entrie 7</p></td><tr><td class="regbits">0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">x</td><td class="regde"><p>The execute permission to protected memory region entrie 7</p></td><tr><td class="regbits">1</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">w</td><td class="regde"><p>The write permission to protected memory region entrie 7</p></td><tr><td class="regbits">2</td><td></td><td></td><td></td><td>Reserved</td></tr><tr><td class="regbits">4:3</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">a</td><td class="regde"><p>The address mode of the IOPMP entry 7: 
+- 0x0: OFF
+- 0x1: TOR
+- 0x2: NA4
+- 0x3: NAPOT</p></td></table>
+<br>
+<table class="regdef" id="Reg_entry_user_cfg7">
+ <tr>
+  <th class="regdef" colspan=5>
+   <div>io_pmp.ENTRY_USER_CFG7 @ 0x207c</div>
+   <div><p>Users defined additional IOPMP check rules entriy 7</p></div>
+   <div>Reset default = 0x0, mask 0xffffffff</div>
+  </th>
+ </tr>
+<tr><td colspan=5><table class="regpic"><tr><td class="bitnum">31</td><td class="bitnum">30</td><td class="bitnum">29</td><td class="bitnum">28</td><td class="bitnum">27</td><td class="bitnum">26</td><td class="bitnum">25</td><td class="bitnum">24</td><td class="bitnum">23</td><td class="bitnum">22</td><td class="bitnum">21</td><td class="bitnum">20</td><td class="bitnum">19</td><td class="bitnum">18</td><td class="bitnum">17</td><td class="bitnum">16</td></tr><tr><td class="fname" colspan=16>im...</td>
+</tr>
+<tr><td class="bitnum">15</td><td class="bitnum">14</td><td class="bitnum">13</td><td class="bitnum">12</td><td class="bitnum">11</td><td class="bitnum">10</td><td class="bitnum">9</td><td class="bitnum">8</td><td class="bitnum">7</td><td class="bitnum">6</td><td class="bitnum">5</td><td class="bitnum">4</td><td class="bitnum">3</td><td class="bitnum">2</td><td class="bitnum">1</td><td class="bitnum">0</td></tr><tr><td class="fname" colspan=16>...im</td>
+</tr></table></td></tr>
+<tr><th width=5%>Bits</th><th width=5%>Type</th><th width=5%>Reset</th><th>Name</th><th>Description</th></tr><tr><td class="regbits">31:0</td><td class="regperm">ro</td><td class="regrv">0x0</td><td class="regfn">im</td><td class="regde"><p>User customized permission field entry 7</p></td></table>
 <br>
